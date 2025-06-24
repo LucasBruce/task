@@ -1,0 +1,5 @@
+# Directories Ignored by Default
+
+# Apps
+apps/api/TaskApi/bin
+apps/api/TaskApi/obj
