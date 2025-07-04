@@ -2,36 +2,46 @@
 
 ```
 task/
-├── src/---------------------------------------BACKEND
-│   ├── Task.API/------------------------------Camada de Apresentação/API
+├── api/--------------------------------BACKEND
+│   ├── Task.API/-----------------------Camada de Apresentação
 │   │   ├── Controllers/
-│   │   │   └── OrderController.cs
-│   │   ├── Program.cs
-│   │   └── appsettings.json
+│   │   │   └── Orders/
+│   │   │       ├── Requests/-----------DTOs de entrada
+│   │   │       ├── Responses/----------DTOs de saída
+│   │   │       └── OrderController.cs
+│   │   ├── Middleware/
+│   │   └── Program.cs
 │   │
-│   ├── Task.Application/----------------------Camada de Aplicação
-│   │   ├── Services/
-│   │   ├── Commands/
-│   │   ├── Queries/
-│   │   └── DTOs/
+│   ├── Task.Application/---------------Camada de Aplicação
+│   │   ├── Features/
+│   │   │   └── Orders/
+│   │   │       ├── Commands/
+│   │   │       ├── Queries/
+│   │   │       ├── Services/
+│   │   │       └── Mappers/
+│   │   └── Core/
 │   │
-│   ├── Task.Domain/---------------------------Camada de Domínio
+│   ├── Task.Domain/--------------------Camada de Domínio
 │   │   ├── Entities/
+│   │   │   └── Order.cs
 │   │   ├── ValueObjects/
-│   │   ├── Enums/
 │   │   ├── Events/
 │   │   └── Interfaces/
 │   │
-│   ├── Task.Infrastructure/-------------------Camada de Infraestrutura
+│   ├── Task.Infrastructure/------------Camada de Infraestrutura
 │   │   ├── Persistence/
+│   │   │   ├── Repositories/
+│   │   │   └── Migrations/
 │   │   ├── Messaging/
 │   │   │   ├── RabbitMqService.cs
 │   │   │   └── RabbitMqConfiguration.cs
 │   │   └── Services/
 │   │
-│   └── Task.Shared/---------------------------Recursos Compartilhados
+│   └── Task.Shared/--------------------Recursos Compartilhados
+│       ├── Exceptions/
+│       └── Utilities/
 │
-├── ui-web/------------------------------------FRONTEND
+├── ui-web/-----------------------------FRONTEND
 │   ├── public/
 │   ├── src/
 │   │   ├── assets/
@@ -46,17 +56,13 @@ task/
 │   ├── vite.config.ts
 │   └── package.json
 │
-├── docker/------------------------------------DOCKER
-│   ├── backend/
-│   │   └── Dockerfile
-│   ├── frontend/
-│   │   └── Dockerfile
-│   ├── nginx/
-│   │   └── default.conf
-│   └── rabbitmq/
-│       └── definitions.json
+├── docker/----------------------------DOCKER
+│   ├── backend.dockerfile
+│   ├── frontend.dockerfile
+│   └── nginx/
+│       └── default.conf
 │
-├── docker-compose.yml-------------------------DOCKER COMPOSE
+├── docker-compose.yml-----------------DOCKER COMPOSE
 ├── .env
 └── README.md
 ```
