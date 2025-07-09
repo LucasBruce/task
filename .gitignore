@@ -1,7 +1,5 @@
 # Directories Ignored by Default
 
-apps/
-
 # api
 
 api/TaskApi.Infrastructure/obj
