@@ -7,3 +7,8 @@
 **/bin
 **/obj
 **/node_modules
+**/apps
+bin/
+obj/
+*.user
+*.suo

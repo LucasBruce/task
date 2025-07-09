@@ -1,5 +1,18 @@
 # Directories Ignored by Default
 
-# Apps
-apps/api/TaskApi/bin
-apps/api/TaskApi/obj
+apps/
+
+# api
+
+api/TaskApi.Infrastructure/obj
+api/TaskApi.Application/obj
+api/TaskApi.Domain/obj
+api/TaskApi.Shared/obj
+api/TaskApi.Api/obj
+
+api/TaskApi.Infrastructure/bin
+api/TaskApi.Application/bin
+api/TaskApi.Domain/bin
+api/TaskApi.Shared/bin
+api/TaskApi.Api/bin
+

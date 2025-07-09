@@ -1,16 +1,21 @@
-version: '3.8'
-
 services:
   backend:
     build:
-      context: ./apps/api/TaskApi
+      context: ./api
       dockerfile: Dockerfile
+      target: development  # Usa o estágio de desenvolvimento
     container_name: backend
     ports:
       - "5000:80"
+    volumes:
+      - ./api:/app
+      - ~/.nuget:/root/.nuget
+    working_dir: /app/TaskApi.Api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - DOTNET_WATCH_RESTART_ON_RUDE_EDIT=true
+      - DOTNET_USE_POLLING_FILE_WATCHER=true
     networks:
       - task-network
 
