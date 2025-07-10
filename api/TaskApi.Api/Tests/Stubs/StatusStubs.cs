@@ -1,18 +1,21 @@
-namespace TaskApi.Shared.Testing.Stubs
+namespace TaskApi.Api.Tests.Stubs
 {
     using TaskApi.Domain.Entities;
 
-    // Stub class for Status entity
     public static class StatusStubs
     {
+        
         public static readonly Status StatusStub = new Status
         {
+            Id = Guid.NewGuid(),    
             Completed = true,
             InProgress = false,
             Pending = false,
         };
+        
         public static readonly Status StatusStub2 = new Status
         {
+            Id = Guid.NewGuid(),    
             Completed = false,
             InProgress = true,
             Pending = false,
@@ -20,6 +23,7 @@ namespace TaskApi.Shared.Testing.Stubs
 
         public static readonly Status StatusStub3 = new Status
         {
+            Id = Guid.NewGuid(),    
             Completed = false,
             InProgress = false,
             Pending = true,
@@ -27,6 +31,7 @@ namespace TaskApi.Shared.Testing.Stubs
 
         public static readonly Status StatusStub4 = new Status
         {
+            Id = Guid.NewGuid(),    
             Completed = true,
             InProgress = true,
             Pending = false,
@@ -34,6 +39,7 @@ namespace TaskApi.Shared.Testing.Stubs
 
         public static readonly Status StatusStub5 = new Status
         {
+            Id = Guid.NewGuid(),    
             Completed = true,
             InProgress = false,
             Pending = true,
@@ -41,6 +47,7 @@ namespace TaskApi.Shared.Testing.Stubs
 
         public static readonly Status StatusStub6 = new Status
         {
+            Id = Guid.NewGuid(),    
             Completed = false,
             InProgress = true,
             Pending = true,
@@ -48,6 +55,7 @@ namespace TaskApi.Shared.Testing.Stubs
 
         public static readonly Status StatusStub7 = new Status
         {
+            Id = Guid.NewGuid(),    
             Completed = true,
             InProgress = true,
             Pending = true,
@@ -55,6 +63,7 @@ namespace TaskApi.Shared.Testing.Stubs
 
         public static readonly Status StatusStub8 = new Status
         {
+            Id = Guid.NewGuid(),    
             Completed = false,
             InProgress = false,
             Pending = false,
@@ -62,6 +71,7 @@ namespace TaskApi.Shared.Testing.Stubs
 
         public static readonly Status StatusStub9 = new Status
         {
+            Id = Guid.NewGuid(),    
             Completed = true,
             InProgress = false,
             Pending = false,

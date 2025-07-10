@@ -1,11 +1,10 @@
-using TaskApi.Domain.Entities;
 using Task = TaskApi.Domain.Entities.Task;
 
-namespace TaskApi.Shared.Testing.Stubs
+namespace TaskApi.Api.Tests.Stubs
 {
     public static class TaskStubs
     {
-        public static readonly Task TaskEve = new Task
+        public static readonly Task Task1 = new Task
         {
             Id = Guid.NewGuid(),
             Title = "Complete Project Documentation",
@@ -13,7 +12,8 @@ namespace TaskApi.Shared.Testing.Stubs
             DueDate = DateTime.Now.AddDays(7),
             Status = StatusStubs.StatusStub,
         };
-        public static readonly Task TaskBob = new Task
+
+        public static readonly Task Task2 = new Task
         {
             Id = Guid.NewGuid(),
             Title = "Implement Authentication",
@@ -22,7 +22,7 @@ namespace TaskApi.Shared.Testing.Stubs
             Status = StatusStubs.StatusStub,
         };
 
-        public static readonly Task TaskAlice = new Task
+        public static readonly Task Task3 = new Task
         {
             Id = Guid.NewGuid(),
             Title = "Design Database Schema",
@@ -31,7 +31,7 @@ namespace TaskApi.Shared.Testing.Stubs
             Status = StatusStubs.StatusStub,
         };
 
-        public static readonly Task TaskCarol = new Task
+        public static readonly Task Task4 = new Task
         {
             Id = Guid.NewGuid(),
             Title = "Setup CI/CD Pipeline",
@@ -40,7 +40,7 @@ namespace TaskApi.Shared.Testing.Stubs
             Status = StatusStubs.StatusStub,
         };
 
-        public static readonly Task TaskDave = new Task
+        public static readonly Task Task5 = new Task
         {
             Id = Guid.NewGuid(),
             Title = "Write Unit Tests",
@@ -49,7 +49,7 @@ namespace TaskApi.Shared.Testing.Stubs
             Status = StatusStubs.StatusStub,
         };
 
-        public static readonly Task TaskFrank = new Task
+        public static readonly Task Task6 = new Task
         {
             Id = Guid.NewGuid(),
             Title = "Refactor API Endpoints",
@@ -58,7 +58,7 @@ namespace TaskApi.Shared.Testing.Stubs
             Status = StatusStubs.StatusStub,
         };
 
-        public static readonly Task TaskGrace = new Task
+        public static readonly Task Task7 = new Task
         {
             Id = Guid.NewGuid(),
             Title = "Prepare Release Notes",
@@ -67,7 +67,7 @@ namespace TaskApi.Shared.Testing.Stubs
             Status = StatusStubs.StatusStub,
         };
 
-        public static readonly Task TaskHeidi = new Task
+        public static readonly Task Task8 = new Task
         {
             Id = Guid.NewGuid(),
             Title = "Conduct Code Review",
@@ -76,7 +76,7 @@ namespace TaskApi.Shared.Testing.Stubs
             Status = StatusStubs.StatusStub,
         };
 
-        public static readonly Task TaskIvan = new Task
+        public static readonly Task Task9 = new Task
         {
             Id = Guid.NewGuid(),
             Title = "Optimize Database Queries",
@@ -89,7 +89,7 @@ namespace TaskApi.Shared.Testing.Stubs
         {
             return new List<Task>
             {
-                TaskEve, TaskBob, TaskAlice, TaskCarol, TaskDave, TaskFrank, TaskGrace, TaskHeidi, TaskIvan
+                Task1, Task2, Task3, Task4, Task5, Task6, Task7, Task8, Task9
             };
         }
     }
