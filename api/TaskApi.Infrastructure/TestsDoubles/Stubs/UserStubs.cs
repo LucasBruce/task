@@ -1,7 +1,7 @@
 
 using TaskApi.Core.Domain.Entities;
 
-namespace TaskApi.Api.Tests.Stubs
+namespace TaskApi.Infrastructure.TestsDoubles.Stubs
 {
     public static class UserStubs
     {

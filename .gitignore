@@ -3,14 +3,10 @@
 # api
 
 api/TaskApi.Infrastructure/obj
-api/TaskApi.Application/obj
-api/TaskApi.Domain/obj
-api/TaskApi.Shared/obj
+api/TaskApi.Core/obj
 api/TaskApi.Api/obj
 
 api/TaskApi.Infrastructure/bin
-api/TaskApi.Application/bin
-api/TaskApi.Domain/bin
-api/TaskApi.Shared/bin
+api/TaskApi.Core/bin
 api/TaskApi.Api/bin
 

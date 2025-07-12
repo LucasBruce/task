@@ -1,4 +1,4 @@
-namespace TaskApi.Domain.Entities
+namespace TaskApi.Core.Domain.Entities
 {
     public class Status
     {

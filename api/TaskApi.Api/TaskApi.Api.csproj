@@ -12,8 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaskApi.Domain\TaskApi.Domain.csproj" />
-    <ProjectReference Include="..\TaskApi.Shared\TaskApi.Shared.csproj" />
+    <ProjectReference Include="..\TaskApi.Core\TaskApi.Core.csproj" />
   </ItemGroup>
 
 </Project>

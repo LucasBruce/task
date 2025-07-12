@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskApi.Infrastructure", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskApi.Shared", "TaskApi.Shared\TaskApi.Shared.csproj", "{C88B84C7-9D73-4282-9C13-94926CC911E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskApi.Core", "TaskApi.Core\TaskApi.Core.csproj", "{E1684CFE-7717-4E8F-B490-668C9AA841ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{C88B84C7-9D73-4282-9C13-94926CC911E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C88B84C7-9D73-4282-9C13-94926CC911E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C88B84C7-9D73-4282-9C13-94926CC911E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1684CFE-7717-4E8F-B490-668C9AA841ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1684CFE-7717-4E8F-B490-668C9AA841ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1684CFE-7717-4E8F-B490-668C9AA841ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1684CFE-7717-4E8F-B490-668C9AA841ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

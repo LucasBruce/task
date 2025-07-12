@@ -1,6 +1,6 @@
 using Task = TaskApi.Core.Domain.Entities.Task;
 
-namespace TaskApi.Api.Tests.Stubs
+namespace TaskApi.Infrastructure.TestsDoubles.Stubs
 {
     public static class TaskStubs
     {

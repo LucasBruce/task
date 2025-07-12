@@ -4,12 +4,12 @@ WORKDIR /app
 
 # Copia apenas os arquivos de projeto para restaurar dependências
 COPY TaskApi.Api/TaskApi.Api.csproj TaskApi.Api/
-COPY TaskApi.Domain/TaskApi.Domain.csproj TaskApi.Domain/
+COPY TaskApi.Core/TaskApi.Core.csproj TaskApi.Core/
 RUN dotnet restore TaskApi.Api/TaskApi.Api.csproj
 
 # Copia o restante do código (mas será sobrescrito pelo volume em dev)
 COPY TaskApi.Api/ TaskApi.Api/
-COPY TaskApi.Domain/ TaskApi.Domain/
+COPY TaskApi.Core/ TaskApi.Core/
 
 # Comando padrão para desenvolvimento com hot reload
 CMD ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:80"]
@@ -18,10 +18,10 @@ CMD ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:80"]
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /api
 COPY TaskApi.Api/TaskApi.Api.csproj TaskApi.Api/
-COPY TaskApi.Domain/TaskApi.Domain.csproj TaskApi.Domain/
+COPY TaskApi.Core/TaskApi.Core.csproj TaskApi.Core/
 RUN dotnet restore TaskApi.Api/TaskApi.Api.csproj
 COPY TaskApi.Api/ TaskApi.Api/
-COPY TaskApi.Domain/ TaskApi.Domain/
+COPY TaskApi.Core/ TaskApi.Core/
 RUN dotnet build TaskApi.Api/TaskApi.Api.csproj -c Release -o /app/build
 
 # Estágio de publicação

@@ -1,8 +1,10 @@
-namespace TaskApi.Domain.Entities
+using TaskApi.Core.Domain.Entities;
+
+namespace TaskApi.Core.Application.DTOs.Requests
 {
-    public class Task
+    public class TaskResponse
     {
-        public Guid Id { get; set; }
+        public bool IsCreated { get; set; } = false;
         public string Title { get; set; } = "";
         public string Description { get; set; } = "";
         public DateTime DueDate { get; set; } = DateTime.Now;
