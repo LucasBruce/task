@@ -1,21 +1,22 @@
 using TaskApi.Core.Application.Interfaces;
 using TaskApi.Core.Application.Services;
 
+
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddScoped<ITaskService, TaskService>();
-
-builder.Services.AddScoped<IUserService, UserService>();
-
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddControllers(); // Configura suporte a controllers
+builder.Services.AddControllers();
+
+// TODO: Implement ComposeApplication or replace with actual service registrations
+// builder.Services.ComposeApplication(builder.Configuration);
 
 var app = builder.Build();
 
 app.MapControllers();
 
 app.UseHttpsRedirection();
+
+app.Run();

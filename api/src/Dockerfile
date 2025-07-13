@@ -16,7 +16,7 @@ CMD ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:80"]
 
 # Estágio de build para produção
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /api
+WORKDIR /src
 COPY TaskApi.Api/TaskApi.Api.csproj TaskApi.Api/
 COPY TaskApi.Core/TaskApi.Core.csproj TaskApi.Core/
 RUN dotnet restore TaskApi.Api/TaskApi.Api.csproj
@@ -26,7 +26,7 @@ RUN dotnet build TaskApi.Api/TaskApi.Api.csproj -c Release -o /app/build
 
 # Estágio de publicação
 FROM build AS publish
-WORKDIR /api
+WORKDIR /src
 RUN dotnet publish TaskApi.Api/TaskApi.Api.csproj -c Release -o /app/publish
 
 # Estágio final para produção

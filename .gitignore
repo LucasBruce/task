@@ -2,11 +2,13 @@
 
 # api
 
-api/TaskApi.Infrastructure/obj
-api/TaskApi.Core/obj
-api/TaskApi.Api/obj
+api/src/TaskApi.Infrastructure/obj
+api/src/TaskApi.Core/obj
+api/src/TaskApi.Compose/obj
+api/src/TaskApi.Api/obj
 
-api/TaskApi.Infrastructure/bin
-api/TaskApi.Core/bin
-api/TaskApi.Api/bin
+api/src/TaskApi.Infrastructure/bin
+api/src/TaskApi.Compose/bin
+api/src/TaskApi.Core/bin
+api/src/TaskApi.Api/bin
 
