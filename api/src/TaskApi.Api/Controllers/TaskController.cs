@@ -24,7 +24,7 @@ namespace TaskApi.Api.Controllers
                 return NotFound("No tasks found.");
             }
 
-            return Ok("Ola...");
+            return Ok(tasks.Result);
         }
 
         [HttpPost]

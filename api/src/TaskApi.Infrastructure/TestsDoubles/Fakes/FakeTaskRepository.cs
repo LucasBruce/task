@@ -36,7 +36,21 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<IEnumerable<TaskResponse>> GetAllTasks()
         {
-            throw new NotImplementedException();
+            var taskResponse = new TaskResponse
+            {
+                IsCreated = true,
+                Title = "Sample Task",
+                Description = "This is a sample task description.",
+                DueDate = DateTime.Now.AddDays(7),
+                Status = {
+                    Id = new Guid("d5f8c5e0-5b5b-4c5b-8c5b-5b5b5c5b5c5b"),
+                    InProgress = true,
+                    Completed = false,
+                    Pending = false
+                }
+            };
+            var tasks = new List<TaskResponse> { taskResponse, taskResponse, taskResponse };
+            return Task.FromResult<IEnumerable<TaskResponse>>(tasks);
         }
 
         public Task<TaskResponse> UpdateTask(UpdatedTaskRequest updatedTaskRequest)

@@ -7,11 +7,13 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaskApi.Core\TaskApi.Core.csproj" />
-    <ProjectReference Include="..\TaskApi.Compose\TaskApi.Compose.csproj" />
+    <ProjectReference Include="..\TaskApi.Infrastructure\TaskApi.Infrastructure.csproj" PrivateAssets="all"/>
   </ItemGroup>
+  <PropertyGroup>
+    <NoWarn>NU1604</NoWarn>
+  </PropertyGroup>
 </Project>
