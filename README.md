@@ -2,55 +2,67 @@
 
 ```
 task/
-├── apps/
-│   ├── api/                           
-│   │   ├── Task.API/             
-│   │   │   ├── Controllers/
-│   │   │   │   └── OrderController.cs
-│   │   │   ├── Program.cs
-│   │   │   └── appsettings.json
-│   │   └── Task.API.sln
+├── api/--------------------------------BACKEND
+│   ├── Task.API/-----------------------Camada de Apresentação
+│   │   ├── Controllers/
+│   │   │   └── Orders/
+│   │   │       ├── Requests/-----------DTOs de entrada
+│   │   │       ├── Responses/----------DTOs de saída
+│   │   │       └── OrderController.cs
+│   │   ├── Middleware/
+│   │   └── Program.cs
 │   │
-│   └── ui-web/                        
-│       ├── public/
-│       ├── src/
-│       │   ├── assets/
-│       │   ├── components/
-│       │   ├── views/
-│       │   │   └── OrderForm.vue
-│       │   ├── router/
-│       │   ├── store/
-│       │   ├── api/
-│       │   │   └── order.ts
-│       │   └── main.ts
-│       ├── vite.config.ts
-│       └── package.json
-│
-├── libs/
-│   ├── core/
-│   │   ├── Task.Domain/          
-│   │   └── Task.Application/     
+│   ├── Task.Application/---------------Camada de Aplicação
+│   │   ├── Features/
+│   │   │   └── Orders/
+│   │   │       ├── Commands/
+│   │   │       ├── Queries/
+│   │   │       ├── Services/
+│   │   │       └── Mappers/
+│   │   └── Core/
 │   │
-│   ├── infrastructure/
-│   │   └── Task.Infrastructure/  
-│   │       └── Messaging/
-│   │           ├── RabbitMqService.cs
-│   │           └── RabbitMqConfiguration.cs
+│   ├── Task.Domain/--------------------Camada de Domínio
+│   │   ├── Entities/
+│   │   │   └── Order.cs
+│   │   ├── ValueObjects/
+│   │   ├── Events/
+│   │   └── Interfaces/
 │   │
-│   └── shared/
-│       └── Task.Shared/          
+│   ├── Task.Infrastructure/------------Camada de Infraestrutura
+│   │   ├── Persistence/
+│   │   │   ├── Repositories/
+│   │   │   └── Migrations/
+│   │   ├── Messaging/
+│   │   │   ├── RabbitMqService.cs
+│   │   │   └── RabbitMqConfiguration.cs
+│   │   └── Services/
+│   │
+│   └── Task.Shared/--------------------Recursos Compartilhados
+│       ├── Exceptions/
+│       └── Utilities/
 │
-├── docker/
-│   ├── backend/
-│   │   └── Dockerfile
-│   ├── frontend/
-│   │   └── Dockerfile
-│   ├── nginx/
-│   │   └── default.conf
-│   └── rabbitmq/
-│       └── definitions.json
+├── ui-web/-----------------------------FRONTEND
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── views/
+│   │   │   └── OrderForm.vue
+│   │   ├── router/
+│   │   ├── store/
+│   │   ├── api/
+│   │   │   └── order.ts
+│   │   └── main.ts
+│   ├── vite.config.ts
+│   └── package.json
 │
-├── docker-compose.yml
+├── docker/----------------------------DOCKER
+│   ├── backend.dockerfile
+│   ├── frontend.dockerfile
+│   └── nginx/
+│       └── default.conf
+│
+├── docker-compose.yml-----------------DOCKER COMPOSE
 ├── .env
 └── README.md
 ```
