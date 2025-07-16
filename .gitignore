@@ -12,3 +12,11 @@ api/src/TaskApi.Compose/bin
 api/src/TaskApi.Core/bin
 api/src/TaskApi.Api/bin
 
+api/src/SeuProjeto.Infrastructure/obj
+api/src/SeuProjeto.Core/obj
+api/src/SeuProjeto.Api/obj
+
+api/src/SeuProjeto.Infrastructure/bin
+api/src/SeuProjeto.Core/bin
+api/src/SeuProjeto.Api/bin
+
