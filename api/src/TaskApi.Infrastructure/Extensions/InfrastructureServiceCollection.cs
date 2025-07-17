@@ -11,7 +11,7 @@ namespace TaskApi.Infrastructure.Extensions
         {
             services.AddScoped<ITaskRepository, FakeTaskRepository>();
 
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserRepository, FakeUserRepository>();
 
             return services;
         }

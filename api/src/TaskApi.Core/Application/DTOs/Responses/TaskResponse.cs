@@ -1,6 +1,6 @@
 using TaskApi.Core.Domain.Entities;
 
-namespace TaskApi.Core.Application.DTOs.Requests
+namespace TaskApi.Core.Application.DTOs.Responses
 {
     public class TaskResponse
     {

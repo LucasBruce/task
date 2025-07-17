@@ -1,7 +1,7 @@
 using TaskApi.Core.Domain.Entities;
-using Task = System.Threading.Tasks.Task;
+using Task = TaskApi.Core.Domain.Entities.Task;
 
-namespace TaskApi.Core.Application.DTOs.Requests
+namespace TaskApi.Core.Application.DTOs.Responses
 {
     public class UserResponse
     {

@@ -10,7 +10,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Title = "Complete Project Documentation",
             Description = "Finalize the documentation for the project and submit it for review.",
             DueDate = DateTime.Now.AddDays(7),
-            Status = StatusStubs.StatusStub,
+            Status = {
+                Completed = false,
+                InProgress = true,
+                Pending = false,
+            },
         };
 
         public static readonly Task Task2 = new Task
@@ -19,7 +23,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Title = "Implement Authentication",
             Description = "Develop and integrate authentication module using JWT.",
             DueDate = DateTime.Now.AddDays(3),
-            Status = StatusStubs.StatusStub,
+            Status = {
+                Completed = false,
+                InProgress = true,
+                Pending = false,
+            },
         };
 
         public static readonly Task Task3 = new Task
@@ -28,7 +36,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Title = "Design Database Schema",
             Description = "Create and review the initial database schema for the application.",
             DueDate = DateTime.Now.AddDays(5),
-            Status = StatusStubs.StatusStub,
+            Status = {
+                Completed = false,
+                InProgress = true,
+                Pending = false,
+            },
         };
 
         public static readonly Task Task4 = new Task
@@ -37,7 +49,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Title = "Setup CI/CD Pipeline",
             Description = "Configure continuous integration and deployment pipeline.",
             DueDate = DateTime.Now.AddDays(10),
-            Status = StatusStubs.StatusStub,
+            Status = {
+                Completed = false,
+                InProgress = true,
+                Pending = false,
+            },
         };
 
         public static readonly Task Task5 = new Task
@@ -46,7 +62,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Title = "Write Unit Tests",
             Description = "Write unit tests for the service layer.",
             DueDate = DateTime.Now.AddDays(4),
-            Status = StatusStubs.StatusStub,
+            Status = {
+                Completed = false,
+                InProgress = true,
+                Pending = false,
+            },
         };
 
         public static readonly Task Task6 = new Task
@@ -55,7 +75,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Title = "Refactor API Endpoints",
             Description = "Refactor and optimize existing API endpoints.",
             DueDate = DateTime.Now.AddDays(6),
-            Status = StatusStubs.StatusStub,
+            Status = {
+                Completed = false,
+                InProgress = true,
+                Pending = false,
+            },
         };
 
         public static readonly Task Task7 = new Task
@@ -64,7 +88,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Title = "Prepare Release Notes",
             Description = "Draft and review release notes for the upcoming version.",
             DueDate = DateTime.Now.AddDays(2),
-            Status = StatusStubs.StatusStub,
+            Status = {
+                Completed = false,
+                InProgress = true,
+                Pending = false,
+            },
         };
 
         public static readonly Task Task8 = new Task
@@ -73,7 +101,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Title = "Conduct Code Review",
             Description = "Review code submissions and provide feedback.",
             DueDate = DateTime.Now.AddDays(1),
-            Status = StatusStubs.StatusStub,
+            Status = {
+                Completed = false,
+                InProgress = true,
+                Pending = false,
+            },
         };
 
         public static readonly Task Task9 = new Task
@@ -82,7 +114,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Title = "Optimize Database Queries",
             Description = "Analyze and optimize slow database queries.",
             DueDate = DateTime.Now.AddDays(8),
-            Status = StatusStubs.StatusStub,
+            Status = {
+                Completed = false,
+                InProgress = true,
+                Pending = false,
+            },
         };
 
         public static IEnumerable<Task> GetAll()

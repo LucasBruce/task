@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TaskApi.Core.Application.DTOs.Requests;
+using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Application.Interfaces;
 
 namespace TaskApi.Core.Application.Services
