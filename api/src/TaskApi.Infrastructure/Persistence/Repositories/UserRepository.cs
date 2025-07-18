@@ -25,7 +25,7 @@ namespace TaskApi.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<UserResponse>> GetAllUsers()
+        public Task<List<UserResponse>> GetAllUsers()
         {
             throw new NotImplementedException();
         }

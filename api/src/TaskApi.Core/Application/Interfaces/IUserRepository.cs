@@ -10,7 +10,7 @@ namespace TaskApi.Core.Application.Interfaces
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<UserResponse>> GetAllUsers();
+        Task<List<UserResponse>> GetAllUsers();
         Task<UserResponse> CreateUser(CreatedUserRequest createdUserRequest);
         Task<UserResponse> UpdateUser(UpdatedUserRequest updatedUserRequest);
         Task<UserResponse> FindUser(FoundUserRequest foundUserRequest);

@@ -1,13 +1,12 @@
 
-using TaskApi.Core.Application.DTOs.Responses;
+using TaskApi.Core.Domain.Entities;
 
 namespace TaskApi.Infrastructure.TestsDoubles.Stubs
 {
-    public static class TaskResponseStubs
+    public static class DutyStubs
     {
-        public static readonly TaskResponse task1 = new TaskResponse
+        public static readonly Duty Task1 = new Duty
         {
-            IsCreated = true,
             Title = "Complete Project Documentation",
             Description = "Finalize the documentation for the project and submit it for review.",
             DueDate = DateTime.Now.AddDays(7),
@@ -18,9 +17,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task2 = new TaskResponse
+        public static readonly Duty Task2 = new Duty
         {
-            IsCreated = true,
             Title = "Complete Project Documentation",
             Description = "Finalize the documentation for the project and submit it for review.",
             DueDate = DateTime.Now.AddDays(7),
@@ -31,9 +29,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task3 = new TaskResponse
+        public static readonly Duty Task3 = new Duty
         {
-            IsCreated = true,
             Title = "Complete Project Documentation",
             Description = "Finalize the documentation for the project and submit it for review.",
             DueDate = DateTime.Now.AddDays(7),
@@ -44,9 +41,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task4 = new TaskResponse
+        public static readonly Duty Task4 = new Duty
         {
-            IsCreated = false,
             Title = "Review Codebase",
             Description = "Go through the codebase and identify areas for refactoring.",
             DueDate = DateTime.Now.AddDays(3),
@@ -57,9 +53,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task5 = new TaskResponse
+        public static readonly Duty Task5 = new Duty
         {
-            IsCreated = true,
             Title = "Submit Expense Report",
             Description = "Submit the monthly expense report to the finance department.",
             DueDate = DateTime.Now.AddDays(-2),
@@ -70,9 +65,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task6 = new TaskResponse
+        public static readonly Duty Task6 = new Duty
         {
-            IsCreated = true,
             Title = "Organize Team Meeting",
             Description = "Schedule and organize a team meeting to discuss project milestones, blockers, and next steps. Ensure all team members are available and send out calendar invites.",
             DueDate = DateTime.Now.AddDays(5),
@@ -83,9 +77,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task7 = new TaskResponse
+        public static readonly Duty Task7 = new Duty
         {
-            IsCreated = false,
             Title = "Fix Bug",
             Description = "Resolve the login issue reported by QA.",
             DueDate = DateTime.Now.AddDays(1),
@@ -96,9 +89,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task8 = new TaskResponse
+        public static readonly Duty Task8 = new Duty
         {
-            IsCreated = true,
             Title = "Deploy to Production",
             DueDate = DateTime.Now.AddDays(2),
             Status = {
@@ -108,9 +100,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task9 = new TaskResponse
+        public static readonly Duty Task9 = new Duty
         {
-            IsCreated = false,
             Title = "Plan Annual Retreat",
             Description = "Start planning for the annual company retreat.",
             DueDate = DateTime.Now.AddYears(1),
@@ -121,11 +112,10 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task10 = new TaskResponse
+        public static readonly Duty Task10 = new Duty
         {
-            IsCreated = true,
             Title = "",
-            Description = "This task has an empty title.",
+            Description = "This Duty has an empty title.",
             DueDate = DateTime.Now.AddDays(10),
             Status = {
                 Completed = true,
@@ -134,9 +124,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task11 = new TaskResponse
+        public static readonly Duty Task11 = new Duty
         {
-            IsCreated = false,
             Title = "Update README.md!",
             Description = "Add badges and update the documentation in README.md.",
             DueDate = DateTime.Now.AddDays(4),
@@ -147,9 +136,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse task12 = new TaskResponse
+        public static readonly Duty Task12 = new Duty
         {
-            IsCreated = true,
             Title = "Daily Standup",
             Description = "Attend the daily standup meeting.",
             DueDate = DateTime.Today,
@@ -160,11 +148,10 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static readonly TaskResponse taskResponseWithDifferentStatus = new TaskResponse
+        public static readonly Duty Task13 = new Duty
         {
-            IsCreated = false,
             Title = "Archive Old Tasks",
-            Description = "Move completed tasks older than 6 months to the archive.",
+            Description = "Move completed Tasks older than 6 months to the archive.",
             DueDate = DateTime.Now.AddDays(15),
             Status = {
                 Completed = true,
@@ -173,23 +160,23 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             }
         };
 
-        public static IEnumerable<TaskResponse> GetAll()
+        public static List<Duty> GetAll()
         {
-            return new List<TaskResponse>
+            return new List<Duty>
             {
-                taskResponseWithDifferentStatus ,
-                task12,
-                task11,
-                task10,
-                task9,
-                task8,
-                task7,
-                task6,
-                task5,
-                task3,
-                task2,
-                task1,
-                task4
+                Task13,
+                Task12,
+                Task11,
+                Task10,
+                Task9,
+                Task8,
+                Task7,
+                Task6,
+                Task5,
+                Task3,
+                Task2,
+                Task1,
+                Task4
             };
         }
 

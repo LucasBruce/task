@@ -6,7 +6,7 @@ using TaskApi.Core.Domain.Entities;
 
 namespace TaskApi.Core.Application.DTOs.Requests
 {
-    public class UpdatedTaskRequest
+    public class UpdatedDutyRequest
     {
         public string? Title { get; set; } = "";
         public string? Description { get; set; } = "";

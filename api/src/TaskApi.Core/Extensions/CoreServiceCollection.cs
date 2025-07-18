@@ -8,9 +8,9 @@ namespace TaskApi.Core.Extensions
     {
         public static IServiceCollection AddCore(this IServiceCollection services)
         {
-            services.AddScoped<ITaskService, TaskService>();
+            services.AddSingleton<IDutyService, DutyService>();
 
-            services.AddScoped<IUserService, UserService>();
+            services.AddSingleton<IUserService, UserService>();
 
             return services;
         }

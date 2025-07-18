@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace TaskApi.Core.Application.DTOs.Requests
 {
-    public class FoundTaskRequest
+    public class FoundDutyRequest
     {
+        public Guid Id { get; set; }
         public string? Title { get; set; } = "";
         public string? Description { get; set; } = "";
     }

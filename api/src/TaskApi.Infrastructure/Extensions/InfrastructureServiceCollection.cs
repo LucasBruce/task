@@ -9,9 +9,9 @@ namespace TaskApi.Infrastructure.Extensions
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddScoped<ITaskRepository, FakeTaskRepository>();
+            services.AddSingleton<IDutyRepository, FakeDutyRepository>();
 
-            services.AddScoped<IUserRepository, FakeUserRepository>();
+            services.AddSingleton<IUserRepository, FakeUserRepository>();
 
             return services;
         }

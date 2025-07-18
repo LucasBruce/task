@@ -5,32 +5,33 @@ using System.Threading.Tasks;
 using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Application.Interfaces;
+using TaskApi.Core.Domain.Entities;
 
 namespace TaskApi.Infrastructure.Persistence.Repositories
 {
-    public class TaskRepository : ITaskRepository
+    public class DutyRepository : IDutyRepository
     {
-        public Task<TaskResponse> CreateTask(CreatedTaskRequest createdTaskRequest)
+        public Task<Duty> CreateDuty(CreatedDutyRequest createdDutyRequest)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteTask(FoundTaskRequest foundTaskRequest)
+        public Task<bool> DeleteDuty(FoundDutyRequest foundDutyRequest)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TaskResponse> FindTask(FoundTaskRequest foundTaskRequest)
+        public Task<Duty> FindDuty(FoundDutyRequest foundDutyRequest)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<TaskResponse>> GetAllTasks()
+        public Task<List<Duty>> GetAllDuties()
         {
             throw new NotImplementedException();
         }
 
-        public Task<TaskResponse> UpdateTask(UpdatedTaskRequest updatedTaskRequest)
+        public Task<Duty> UpdateDuty(UpdatedDutyRequest updatedDutyRequest)
         {
             throw new NotImplementedException();
         }

@@ -8,17 +8,17 @@ namespace TaskApi.Api.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserService userService;
+        private readonly IUserService _userService;
 
-        public UserController(IUserService UserService)
+        public UserController(IUserService userService)
         {
-            this.userService = UserService;
+            _userService = userService;
         }
 
         [HttpGet]
         public IActionResult GetAllUsers()
         {
-            var users = this.userService.GetAllUsers();
+            var users = _userService.GetAllUsers();
             if (users == null || !users.Result.Any())
             {
                 return NotFound("No users found.");
@@ -35,7 +35,7 @@ namespace TaskApi.Api.Controllers
                 return BadRequest("Invalid user data.");
             }
 
-            var userResponse = this.userService.CreateUser(createdUserRequest);
+            var userResponse = _userService.CreateUser(createdUserRequest);
 
             if (userResponse == null)
             {
@@ -53,7 +53,7 @@ namespace TaskApi.Api.Controllers
                 return BadRequest("Invalid user data.");
             }
 
-            var userResponse = this.userService.UpdateUser(updatedUserRequest);
+            var userResponse = _userService.UpdateUser(updatedUserRequest);
 
             if (userResponse == null)
             {
@@ -71,7 +71,7 @@ namespace TaskApi.Api.Controllers
                 return BadRequest("Invalid user request.");
             }
 
-            var userResponse = this.userService.FindUser(foundUserRequest);
+            var userResponse = _userService.FindUser(foundUserRequest);
 
             if (userResponse == null)
             {
@@ -89,7 +89,7 @@ namespace TaskApi.Api.Controllers
                 return BadRequest("Invalid user request.");
             }
 
-            var isDeleted = this.userService.DeleteUser(foundUserRequest);
+            var isDeleted = _userService.DeleteUser(foundUserRequest);
 
             if (!isDeleted.Result)
             {

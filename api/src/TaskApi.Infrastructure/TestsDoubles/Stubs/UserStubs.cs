@@ -11,10 +11,10 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Alice Johnson",
             CorporateEmail = "alice.johnson@company.com",
             Job = "Software Engineer",
-            Tasks = [
-               TaskStubs.Task1,
-               TaskStubs.Task2,
-               TaskStubs.Task3,
+            Duties = [
+               DutyStubs.Task1,
+               DutyStubs.Task2,
+               DutyStubs.Task3,
             ]
         };
 
@@ -24,9 +24,9 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Bob Smith",
             CorporateEmail = "bob.smith@company.com",
             Job = "Data Analyst",
-            Tasks = [
-                TaskStubs.Task4,
-                TaskStubs.Task5,
+            Duties = [
+                DutyStubs.Task4,
+                DutyStubs.Task5,
             ]
         };
 
@@ -36,8 +36,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Carol Williams",
             CorporateEmail = "carol.williams@company.com",
             Job = "UX Designer",
-            Tasks = [
-                TaskStubs.Task4,
+            Duties = [
+                DutyStubs.Task4,
             ]
         };
 
@@ -47,8 +47,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Frank Miller",
             CorporateEmail = "frank.miller@company.com",
             Job = "Product Owner",
-            Tasks = [
-                TaskStubs.Task9
+            Duties = [
+                DutyStubs.Task9
             ]
         };
 
@@ -58,8 +58,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Grace Lee",
             CorporateEmail = "grace.lee@company.com",
             Job = "QA Engineer",
-            Tasks = [
-                TaskStubs.Task6,
+            Duties = [
+                DutyStubs.Task6,
             ]
         };
 
@@ -69,9 +69,9 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Henry Clark",
             CorporateEmail = "henry.clark@company.com",
             Job = "DevOps Engineer",
-            Tasks = [
-                TaskStubs.Task7,
-                TaskStubs.Task8,
+            Duties = [
+                DutyStubs.Task7,
+                DutyStubs.Task8,
             ]
         };
 
@@ -81,8 +81,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Ivy Turner",
             CorporateEmail = "ivy.turner@company.com",
             Job = "Marketing Specialist",
-            Tasks = [
-                TaskStubs.Task6,
+            Duties = [
+                DutyStubs.Task6,
             ]
         };
 
@@ -92,8 +92,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Jack White",
             CorporateEmail = "jack.white@company.com",
             Job = "Sales Executive",
-            Tasks = [
-                TaskStubs.Task8,
+            Duties = [
+                DutyStubs.Task8,
             ]
         };
 
@@ -103,8 +103,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Karen Harris",
             CorporateEmail = "karen.harris@company.com",
             Job = "HR Manager",
-            Tasks = [
-                TaskStubs.Task8
+            Duties = [
+                DutyStubs.Task8
             ]
         };
 
@@ -114,8 +114,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Leo Walker",
             CorporateEmail = "leo.walker@company.com",
             Job = "Software Engineer",
-            Tasks = [
-                TaskStubs.Task3
+            Duties = [
+                DutyStubs.Task3
             ]
         };
 
@@ -125,8 +125,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Mona Scott",
             CorporateEmail = "mona.scott@company.com",
             Job = "Graphic Designer",
-            Tasks = [
-                TaskStubs.Task4
+            Duties = [
+                DutyStubs.Task4
             ]
         };
 
@@ -136,8 +136,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Nina Adams",
             CorporateEmail = "nina.adams@company.com",
             Job = "Content Writer",
-            Tasks = [
-                TaskStubs.Task5
+            Duties = [
+                DutyStubs.Task5
             ]
         };
 
@@ -147,8 +147,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Oscar Reed",
             CorporateEmail = "oscar.reed@company.com",
             Job = "Project Manager",
-            Tasks = [
-                TaskStubs.Task6
+            Duties = [
+                DutyStubs.Task6
             ]
         };
 
@@ -158,8 +158,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "David Brown",
             CorporateEmail = "david.brown@company.com",
             Job = "IT Support",
-            Tasks = [
-                TaskStubs.Task7
+            Duties = [
+                DutyStubs.Task7
             ]
         };
 
@@ -169,13 +169,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Name = "Eve Davis",
             CorporateEmail = "eve.davis@company.com",
             Job = "Marketing Manager",
-            Tasks = [
-                TaskStubs.Task1,
-                TaskStubs.Task2,
+            Duties = [
+                DutyStubs.Task1,
+                DutyStubs.Task2,
             ]
         };
 
-        public static IEnumerable<UserResponse> GetAll()
+        public static List<UserResponse> GetAll()
         {
 
             return new List<UserResponse>
