@@ -5,14 +5,22 @@ using System.Threading.Tasks;
 using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Application.Interfaces;
+using TaskApi.Core.Application.Mappings;
+using TaskApi.Core.Domain.Entities;
 
 namespace TaskApi.Core.Application.Services
 {
+    private readonly 
+
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, AutoMapperUser autoMapperProfile)
+        {
+            _userRepository = userRepository;
+            _autoMapperProfile = autoMapperProfile;
+        }
         {
             _userRepository = userRepository;
         }

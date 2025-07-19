@@ -1,73 +1,70 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TaskApi.Core.Application.DTOs.Requests;
+using TaskApi.Core.Domain.Entities;
 using TaskApi.Core.Application.Interfaces;
-using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Infrastructure.TestsDoubles.Stubs;
+using TaskApi.Core.Application.DTOs.Requests;
 
 namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 {
     public class FakeUserRepository : IUserRepository
     {
-        private readonly List<UserResponse> _users = UserResponseStubs.GetAll();
+        private readonly List<User> _users = UserStubs.GetAll();
 
-        public Task<UserResponse> CreateUser(CreatedUserRequest createdUserRequest)
+        public Task<User> CreateUser(User user)
         {
-            var userResponse = new UserResponse
+            var createdUser = new User
             {
-                IsCreated = true,
-                Name = createdUserRequest.Name,
-                CorporateEmail = createdUserRequest.CorporateEmail,
-                Job = createdUserRequest.Job,
-                Duties = createdUserRequest.Duties ?? []
+                Name = user.Name,
+                CorporateEmail = user.CorporateEmail,
+                Job = user.Job,
+                Duties = new List<Duty>()
             };
 
-            _users.Add(userResponse);
+            _users.Add(createdUser);
 
-            return Task.FromResult(userResponse);
+            return Task.FromResult(createdUser);
         }
 
         public Task<bool> DeleteUser(FoundUserRequest foundUserRequest)
         {
-            var user = FindUser(foundUserRequest).Result;
+            var userR = FindUser(foundUserRequest).Result;
 
-            _users.Remove(user);
+            _users.Remove(userR);
 
             return Task.FromResult(true);
         }
 
-        public Task<UserResponse> FindUser(FoundUserRequest foundUserRequest)
+        public Task<User> FindUser(FoundUserRequest foundUserRequest)
         {
-            var user = _users.FirstOrDefault(element => element.Id == foundUserRequest.Id);
-            if (user == null)
+            var foundUser = _users.FirstOrDefault(element => element.Id == foundUserRequest.Id);
+
+            if (foundUser == null)
             {
                 throw new NotImplementedException();
             }
 
-            return Task.FromResult(user);
+            return Task.FromResult(foundUser);
         }
 
-        public Task<List<UserResponse>> GetAllUsers()
+        public Task<List<User>> GetAllUsers()
         {
             return Task.FromResult(_users);
         }
 
-        public Task<UserResponse> UpdateUser(UpdatedUserRequest updatedUserRequest)
+        public Task<User> UpdateUser(UpdatedUserRequest updatedUserRequest)
         {
-            var user = _users.FirstOrDefault(element => element.Id == updatedUserRequest.Id);
-            if (user == null)
-            {
-                throw new NotImplementedException();
-            }
+            // var foundUser = _users.FirstOrDefault(element => element.Id == updatedUserRequest.Id);
 
-            user.Name = updatedUserRequest.Name ?? user.Name;
-            user.CorporateEmail = updatedUserRequest.CorporateEmail ?? user.CorporateEmail;
-            user.Job = updatedUserRequest.Job ?? user.Job;
-            user.Duties = updatedUserRequest.Duties ?? user.Duties;
+            // if (foundUser == null)
+            // {
+            //     throw new NotImplementedException();
+            // }
 
-            return Task.FromResult(user);
+            // updatedUserRequest.Name = foundUser.Name ?? updatedUserRequest.Name;
+            // updatedUserRequest.CorporateEmail = foundUser.CorporateEmail ?? updatedUserRequest.CorporateEmail;
+            // updatedUserRequest.Job = foundUser.Job ?? updatedUserRequest.Job;
+            // updatedUserRequest.Duties = updatedUserRequest.Duties ?? foundUser.Duties;
+
+            return Task.FromResult(new User());
         }
 
     }

@@ -5,10 +5,9 @@ namespace TaskApi.Core.Application.DTOs.Requests
 {
     public class CreatedUserRequest
     {
-        public Guid? Id { get; set; } = Guid.NewGuid();
-        public string Name { get; set; } = "";
-        public string CorporateEmail { get; set; } = "";
-        public string Job { get; set; } = "";
-        public List<Duty>? Duties { get; set; } = new List<Duty>();
+        public string Name { get; set; } = string.Empty;
+        public string CorporateEmail { get; set; } = string.Empty;
+        public string Job { get; set; } = string.Empty;
+        public List<Duty>? Duties { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace TaskApi.Core.Application.DTOs.Requests
     public class FoundUserRequest
     {
         public Guid Id { get; set; }
-        public string? Name { get; set; } = "";
-        public string? CorporateEmail { get; set; } = "";
+        public string Name { get; set; } = string.Empty;
+        public string CorporateEmail { get; set; } = string.Empty;
     }
 }

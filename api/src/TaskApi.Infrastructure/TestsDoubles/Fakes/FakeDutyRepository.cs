@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TaskApi.Core.Application.DTOs.Requests;
-using TaskApi.Core.Application.DTOs.Responses;
-using TaskApi.Core.Application.Interfaces;
 using TaskApi.Core.Domain.Entities;
+using TaskApi.Core.Application.Interfaces;
 using TaskApi.Infrastructure.TestsDoubles.Stubs;
+using TaskApi.Core.Application.DTOs.Requests;
 
 namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 {
@@ -14,14 +9,14 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
     {
         private readonly List<Duty> _duties = DutyStubs.GetAll();
 
-        public Task<Duty> CreateDuty(CreatedDutyRequest createdDutyRequest)
+        public Task<Duty> CreateDuty(Duty duty)
         {
             var dutyResponse = new Duty
             {
-                Title = createdDutyRequest.Title,
-                Description = createdDutyRequest.Description,
-                DueDate = createdDutyRequest.DueDate,
-                Status = createdDutyRequest.Status,
+                Title = duty.Title,
+                Description = duty.Description,
+                DueDate = duty.DueDate,
+                Status = duty.Status,
             };
 
             _duties.Add(dutyResponse);
@@ -31,28 +26,28 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<bool> DeleteDuty(FoundDutyRequest foundDutyRequest)
         {
-            var duty = FindDuty(foundDutyRequest).Result;
+            var foundDuty = FindDuty(foundDutyRequest).Result;
 
-            if (duty == null)
+            if (foundDuty == null)
             {
                 return Task.FromResult(false);
             }
 
-            _duties.Remove(duty);
+            _duties.Remove(foundDuty);
             
             return Task.FromResult(true);
         }
 
         public Task<Duty> FindDuty(FoundDutyRequest foundDutyRequest)
         {
-            var duty = _duties.FirstOrDefault(t => t.Id == foundDutyRequest.Id);
+            var foundDuty = _duties.FirstOrDefault(t => t.Id == foundDutyRequest.Id);
 
-            if (duty == null)
+            if (foundDuty == null)
             {
                 throw new DllNotFoundException("Task not found.");
             }
 
-            return Task.FromResult(duty);
+            return Task.FromResult(foundDuty);
         }
 
         public Task<List<Duty>> GetAllDuties()

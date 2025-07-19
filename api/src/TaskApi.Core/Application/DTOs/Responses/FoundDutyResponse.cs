@@ -1,13 +1,15 @@
 using TaskApi.Core.Domain.Entities;
 
-namespace TaskApi.Core.Application.DTOs.Requests
+namespace TaskApi.Core.Application.DTOs.Responses
 {
-    public class CreatedDutyRequest
+    public class FoundDutyResponse
     {
+        public Guid Id { get; set; }
+        public bool IsCreated { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public DateTime DueDate { get; set; }
         public Status Status { get; set; } = new Status();
-        public User User { get; set; } = new User();
+        public UserResponse UserResponse { get; set; } = new UserResponse();
     }
 }

@@ -6,7 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="AutoMapper" />
   </ItemGroup>
   <PropertyGroup>
     <NoWarn>NU1604;NU1602</NoWarn>

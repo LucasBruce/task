@@ -8,9 +8,9 @@ namespace TaskApi.Core.Application.DTOs.Requests
 {
     public class UpdatedDutyRequest
     {
-        public string? Title { get; set; } = "";
-        public string? Description { get; set; } = "";
-        public DateTime? DueDate { get; set; } = DateTime.Now;
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public DateTime? DueDate { get; set; }
         public Status? Status { get; set; } = new Status();
     }
 }
