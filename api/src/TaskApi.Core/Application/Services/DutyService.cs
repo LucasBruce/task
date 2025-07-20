@@ -1,4 +1,3 @@
-using AutoMapper;
 using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Application.Interfaces;
@@ -8,12 +7,10 @@ namespace TaskApi.Core.Application.Services
     public class DutyService : IDutyService
     {
         private readonly IDutyRepository _dutyRepository;
-        private readonly IMapper _mapper;
 
-        public DutyService(IDutyRepository dutyRepository, IMapper mapper)
+        public DutyService(IDutyRepository dutyRepository)
         {
             _dutyRepository = dutyRepository;
-            _mapper = mapper;
         }
 
         public Task<DutyResponse> CreateDuty(CreatedDutyRequest createdDutyRequest)
