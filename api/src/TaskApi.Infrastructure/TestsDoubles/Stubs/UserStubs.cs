@@ -5,101 +5,180 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
 {
     public static class UserStubs
     {
-        public static readonly User John = new User
+        public static User User1 => new User
         {
-            Id = Guid.NewGuid(),
-            Name = "John Doe",
-            CorporateEmail = "john@yahoo.com",
-            Job = "Software Engineer",
-            Tasks = []
-        };
-
-        public static readonly User Jane = new User
-        {
-            Id = Guid.NewGuid(),
-            Name = "Jane Smith",
-            CorporateEmail = "jane@outlook.com",
-            Job = "Product Manager",
-            Tasks = []
-        };
-        public static readonly User Alice = new User
-        {
-            Id = Guid.NewGuid(),
             Name = "Alice Johnson",
-            CorporateEmail = "alice@gmail.com",
-            Job = "QA Analyst",
-            Tasks = []
+            CorporateEmail = "alice.johnson@company.com",
+            Job = "Software Engineer",
+            Duties = [
+               DutyStubs.Task1,
+               DutyStubs.Task2,
+               DutyStubs.Task3,
+            ]
         };
 
-        public static readonly User Bob = new User
+        public static User User2 => new User
         {
-            Id = Guid.NewGuid(),
-            Name = "Bob Brown",
-            CorporateEmail = "bob@company.com",
+            Name = "Bob Smith",
+            CorporateEmail = "bob.smith@company.com",
+            Job = "Data Analyst",
+            Duties = [
+                DutyStubs.Task4,
+                DutyStubs.Task5,
+            ]
+        };
+
+        public static User User3 => new User
+        {
+            Name = "Carol Williams",
+            CorporateEmail = "carol.williams@company.com",
+            Job = "UX Designer",
+            Duties = [
+                DutyStubs.Task6,
+            ]
+        };
+
+        public static User User4 => new User
+        {
+            Name = "Frank Miller",
+            CorporateEmail = "frank.miller@company.com",
+            Job = "Product Owner",
+            Duties = [
+                DutyStubs.Task7
+            ]
+        };
+
+        public static User User5 => new User
+        {
+            Name = "Grace Lee",
+            CorporateEmail = "grace.lee@company.com",
+            Job = "QA Engineer",
+            Duties = [
+                DutyStubs.Task8,
+            ]
+        };
+
+        public static User User6 => new User
+        {
+            Name = "Henry Clark",
+            CorporateEmail = "henry.clark@company.com",
             Job = "DevOps Engineer",
-            Tasks = []
+            Duties = [
+                DutyStubs.Task9,
+            ]
         };
 
-        public static readonly User Carol = new User
+        public static User User7 => new User
         {
-            Id = Guid.NewGuid(),
-            Name = "Carol White",
-            CorporateEmail = "carol@enterprise.com",
-            Job = "UI Designer",
-            Tasks = []
+            Name = "Ivy Turner",
+            CorporateEmail = "ivy.turner@company.com",
+            Job = "Marketing Specialist",
+            Duties = [
+                DutyStubs.Task10,
+            ]
         };
 
-        public static readonly User Dave = new User
+        public static User User8 => new User
         {
-            Id = Guid.NewGuid(),
-            Name = "Dave Green",
-            CorporateEmail = "dave@startup.com",
-            Job = "Backend Developer",
-            Tasks = []
+            Name = "Jack White",
+            CorporateEmail = "jack.white@company.com",
+            Job = "Sales Executive",
+            Duties = [
+                DutyStubs.Task11,
+            ]
         };
 
-        public static readonly User Eve = new User
+        public static User User9 => new User
         {
-            Id = Guid.NewGuid(),
-            Name = "Eve Black",
-            CorporateEmail = "eve@security.com",
-            Job = "Security Specialist",
-            Tasks = []
+            Name = "Karen Harris",
+            CorporateEmail = "karen.harris@company.com",
+            Job = "HR Manager",
+            Duties = [
+                DutyStubs.Task12
+            ]
         };
 
-        public static readonly User Frank = new User
+        public static User User10 => new User
         {
-            Id = Guid.NewGuid(),
-            Name = "Frank Blue",
-            CorporateEmail = "frank@cloud.com",
-            Job = "Cloud Architect",
-            Tasks = []
+            Name = "Leo Walker",
+            CorporateEmail = "leo.walker@company.com",
+            Job = "Software Engineer",
+            Duties = [
+                DutyStubs.Task13
+            ]
         };
 
-        public static readonly User Grace = new User
+        public static User User11 => new User
         {
-            Id = Guid.NewGuid(),
-            Name = "Grace Pink",
-            CorporateEmail = "grace@ai.com",
-            Job = "AI Researcher",
-            Tasks = []
+            Name = "Mona Scott",
+            CorporateEmail = "mona.scott@company.com",
+            Job = "Graphic Designer",
+            Duties = [
+                DutyStubs.Task14
+            ]
         };
-        
-        public static IEnumerable<User> GetAll()
+
+        public static User User12 => new User
         {
-            John.Tasks = [TaskStubs.Task8, TaskStubs.Task5];
-            Jane.Tasks = [TaskStubs.Task7, TaskStubs.Task4];
-            Alice.Tasks = [TaskStubs.Task1, TaskStubs.Task2];
-            Bob.Tasks = [TaskStubs.Task3, TaskStubs.Task4];
-            Carol.Tasks = [TaskStubs.Task5, TaskStubs.Task6];
-            Dave.Tasks = [TaskStubs.Task7, TaskStubs.Task8];
-            Eve.Tasks = [TaskStubs.Task9, TaskStubs.Task1];
-            Frank.Tasks = [TaskStubs.Task2, TaskStubs.Task3];
-            Grace.Tasks = [TaskStubs.Task4, TaskStubs.Task8];
+            Name = "Nina Adams",
+            CorporateEmail = "nina.adams@company.com",
+            Job = "Content Writer",
+            Duties = [
+                DutyStubs.Task15
+            ]
+        };
+
+        public static User User13 => new User
+        {
+            Name = "Oscar Reed",
+            CorporateEmail = "oscar.reed@company.com",
+            Job = "Project Manager",
+            Duties = [
+                DutyStubs.Task16
+            ]
+        };
+
+        public static User User14 => new User
+        {
+            Name = "David Brown",
+            CorporateEmail = "david.brown@company.com",
+            Job = "IT Support",
+            Duties = [
+                DutyStubs.Task17
+            ]
+        };
+
+        public static User User15 => new User
+        {
+            Name = "Eve Davis",
+            CorporateEmail = "eve.davis@company.com",
+            Job = "Marketing Manager",
+            Duties = [
+                DutyStubs.Task18,
+                DutyStubs.Task19,
+            ]
+        };
+
+        public static List<User> GetAll()
+        {
 
             return new List<User>
             {
-                John, Jane, Alice, Bob, Carol, Dave, Eve, Frank, Grace
+                User1,
+                User2,
+                User3,
+                User4,
+                User5,
+                User6,
+                User7,
+                User8,
+                User9,
+                User10,
+                User11,
+                User12,
+                User13,
+                User14,
+                User15
             };
         }
     }

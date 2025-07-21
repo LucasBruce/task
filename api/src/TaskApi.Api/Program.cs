@@ -1,10 +1,11 @@
-using TaskApi.Core.Application.Interfaces;
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
+using TaskApi.Core.Application.Mappings;
 using TaskApi.Core.Extensions;
 using TaskApi.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddControllers();

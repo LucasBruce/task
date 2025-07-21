@@ -66,3 +66,30 @@ task/
 ├── .env
 └── README.md
 ```
+
+As versões atuais do .NET, até o momento, não lidam bem com o versionamento
+centralizado de bibliotecas. Basicamente, existem duas opções:
+
+1. Suprimir os avisos manualmente adicionando esta configuração nos projetos
+onde ocorrem os conflitos:
+
+```xml
+<PropertyGroup>
+  <NoWarn>NU1604;NU1602</NoWarn>
+</PropertyGroup>
+```
+
+2. Adicionar explicitamente as versões das bibliotecas diretamente
+nos respectivos projetos onde são utilizadas, da forma tradicional.
+Porém, nesse caso, não haverá um gerenciamento
+centralizado de dependências.
+
+Utilizei o padrão Singleton nas injeções de dependencias, pois no
+contexto atual do projeto não é necessário multiplas instâncias já
+que não terá multiplas requisições em concorrência.
+
+Observação: Para que o gerenciamento centralizado funcione correta-
+mente é necessário criar o arquivo .props com está nomenclatura
+apenas Directory.Packages.props
+
+
