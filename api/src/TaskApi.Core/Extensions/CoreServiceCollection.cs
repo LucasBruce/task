@@ -8,6 +8,8 @@ namespace TaskApi.Core.Extensions
     {
         public static IServiceCollection AddCore(this IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(DutyProfile).Assembly);
+
             services.AddSingleton<IDutyService, DutyService>();
 
             services.AddSingleton<IUserService, UserService>();

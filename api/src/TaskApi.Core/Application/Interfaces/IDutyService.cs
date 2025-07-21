@@ -5,9 +5,9 @@ namespace TaskApi.Core.Application.Interfaces
 {
     public interface IDutyService
     {
-        Task<List<FoundDutyResponse>> GetAllDuties();
-        Task<FoundDutyResponse> CreateDuty(CreatedDutyRequest createdDutyRequest);
-        Task<FoundDutyResponse> UpdateDuty(UpdatedDutyRequest updatedDutyRequest);
+        Task<IEnumerable<DutyResponse>> GetAllDuties();
+        Task<bool> CreateDuty(CreatedDutyRequest createdDutyRequest);
+        Task<bool> UpdateDuty(UpdatedDutyRequest updatedDutyRequest);
         Task<FoundDutyResponse> FindDuty(FoundDutyRequest foundDutyRequest);
         Task<bool> DeleteDuty(FoundDutyRequest foundDutyRequest);
     }

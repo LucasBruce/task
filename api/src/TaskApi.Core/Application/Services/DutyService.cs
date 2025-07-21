@@ -1,6 +1,7 @@
 using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Application.Interfaces;
+using TaskApi.Core.Domain.Entities;
 
 namespace TaskApi.Core.Application.Services
 {
@@ -13,11 +14,14 @@ namespace TaskApi.Core.Application.Services
             _dutyRepository = dutyRepository;
         }
 
-        public Task<DutyResponse> CreateDuty(CreatedDutyRequest createdDutyRequest)
+        public Task<bool> CreateDuty(CreatedDutyRequest createdDutyRequest)
         {
-            var dutyResponse = _dutyRepository.CreateDuty(createdDutyRequest);
+            var duty = _mapper.Map<Duty>(createdDutyRequest);
+            var dutyResponse = _dutyRepository.CreateDuty(duty);
+            var dutyRS = _mapper.Map<DutyResponse>(dutyResponse);
 
-            return dutyResponse;
+            return Task.FromResult(true);
+     
         }
 
         public Task<bool> DeleteDuty(FoundDutyRequest foundDutyRequest)
@@ -27,25 +31,30 @@ namespace TaskApi.Core.Application.Services
             return isDeleted;
         }
 
-        public Task<DutyResponse> FindDuty(FoundDutyRequest foundDutyRequest)
+        public Task<FoundDutyResponse> FindDuty(FoundDutyRequest foundDutyRequest)
         {
             var dutyResponse = _dutyRepository.FindDuty(foundDutyRequest);
 
-            return dutyResponse;
+            var duty = _mapper.Map<FoundDutyResponse>(dutyResponse);
+
+            return Task.FromResult(duty);
         }
 
-        public Task<List<DutyResponse>> GetAllDuties()
+        public async Task<IEnumerable<DutyResponse>> GetAllDuties()
         {
-            var duties = _dutyRepository.GetAllDuties();
+            var duties = await _dutyRepository.GetAllDuties();
+            IEnumerable<DutyResponse> dutiesResponses = _mapper.Map<IEnumerable<DutyResponse>>(duties);
 
-            return duties;
+            return dutiesResponses;
         }
 
-        public Task<DutyResponse> UpdateDuty(UpdatedDutyRequest updatedDutyRequest)
+        public Task<bool> UpdateDuty(UpdatedDutyRequest updatedDutyRequest)
         {
             var dutyResponse = _dutyRepository.UpdateDuty(updatedDutyRequest);
 
-            return dutyResponse;
+            IEnumerable<DutyResponse> dutiesResponses = _mapper.Map<IEnumerable<DutyResponse>>(dutyResponse);
+
+            return Task.FromResult(true);
         }
     }
 }

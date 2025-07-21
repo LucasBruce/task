@@ -87,3 +87,9 @@ centralizado de dependências.
 Utilizei o padrão Singleton nas injeções de dependencias, pois no
 contexto atual do projeto não é necessário multiplas instâncias já
 que não terá multiplas requisições em concorrência.
+
+Observação: Para que o gerenciamento centralizado funcione correta-
+mente é necessário criar o arquivo .props com está nomenclatura
+apenas Directory.Packages.props
+
+

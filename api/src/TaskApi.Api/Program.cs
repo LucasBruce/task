@@ -1,3 +1,6 @@
+using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
+using TaskApi.Core.Application.Mappings;
 using TaskApi.Core.Extensions;
 using TaskApi.Infrastructure.Extensions;
 

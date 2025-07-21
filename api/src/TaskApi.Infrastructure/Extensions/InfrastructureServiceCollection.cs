@@ -1,6 +1,5 @@
 using TaskApi.Core.Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using TaskApi.Infrastructure.Persistence.Repositories;
 using TaskApi.Infrastructure.TestsDoubles.Fakes;
 
 namespace TaskApi.Infrastructure.Extensions
