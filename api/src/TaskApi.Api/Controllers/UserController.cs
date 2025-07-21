@@ -19,6 +19,7 @@ namespace TaskApi.Api.Controllers
         public IActionResult GetAllUsers()
         {
             var users = _userService.GetAllUsers();
+            
             if (users == null || !users.Result.Any())
             {
                 return NotFound("No users found.");

@@ -1,85 +1,71 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Application.Interfaces;
-using TaskApi.Core.Application.Mappings;
 using TaskApi.Core.Domain.Entities;
+using AutoMapper;
 
 namespace TaskApi.Core.Application.Services
 {
     public class UserService : IUserService
     {
-        // private readonly IUserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        // public UserService(IUserRepository userRepository, AutoMapperUser autoMapperProfile)
-        // {
-        //     _userRepository = userRepository;
-        //     _autoMapperProfile = autoMapperProfile;
-        // }
-        // {
-        //     _userRepository = userRepository;
-        // }
+        private readonly IMapper _mapper;
 
-        // public Task<UserResponse> CreateUser(CreatedUserRequest createdUserRequest)
-        // {
-        //     var userResponse = _userRepository.CreateUser(createdUserRequest);
-
-        //     return userResponse;
-        // }
-
-        // public Task<bool> DeleteUser(FoundUserRequest foundUserRequest)
-        // {
-        //     var isDeleted = _userRepository.DeleteUser(foundUserRequest);
-
-        //     return isDeleted;
-        // }
-
-        // public Task<UserResponse> FindUser(FoundUserRequest foundUserRequest)
-        // {
-        //     var userResponse = _userRepository.FindUser(foundUserRequest);
-
-        //     return userResponse;
-        // }
-
-        // public Task<List<UserResponse>> GetAllUsers()
-        // {
-        //     var users = _userRepository.GetAllUsers();
-
-        //     return users;
-        // }
-
-        // public Task<UserResponse> UpdateUser(UpdatedUserRequest updatedUserRequest)
-        // {
-        //     var userResponse = _userRepository.UpdateUser(updatedUserRequest);
-
-        //     return userResponse;
-        // }
-        public Task<FoundUserResponse> CreateUser(CreatedUserRequest createdUserRequest)
+        public UserService(IUserRepository userRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _userRepository = userRepository;
+
+            _mapper = mapper;
         }
 
-        public Task<bool> DeleteUser(FoundUserRequest foundUserRequest)
+        public async Task<UserResponse> CreateUser(CreatedUserRequest createdUserRequest)
         {
-            throw new NotImplementedException();
+            var user = _mapper.Map<User>(createdUserRequest);
+
+            var userResponse = await _userRepository.CreateUser(user);
+
+            var userResponseDto = _mapper.Map<UserResponse>(userResponse);
+
+            return userResponseDto;
         }
 
-        public Task<FoundUserResponse> FindUser(FoundUserRequest foundUserRequest)
+        public async Task<bool> DeleteUser(FoundUserRequest foundUserRequest)
         {
-            throw new NotImplementedException();
+            var foundUser = await FindUser(foundUserRequest);
+
+            var foundUserDto = _mapper.Map<FoundUserRequest>(foundUser);
+
+            var isDeleted = await _userRepository.DeleteUser(foundUserDto);
+
+            return isDeleted;
         }
 
-        public Task<List<FoundUserResponse>> GetAllUsers()
+        public async Task<FoundUserResponse> FindUser(FoundUserRequest foundUserRequest)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.FindUser(foundUserRequest);
+
+            var userResponse = _mapper.Map<FoundUserResponse>(user);
+
+            return userResponse;
         }
 
-        public Task<FoundUserResponse> UpdateUser(UpdatedUserRequest updatedUserRequest)
+        public async Task<List<UserResponse>> GetAllUsers()
         {
-            throw new NotImplementedException();
+            var users = await _userRepository.GetAllUsers();
+
+            var userResponses = _mapper.Map<List<UserResponse>>(users);
+
+            return userResponses;
+        }
+
+        public async Task<UserResponse> UpdateUser(UpdatedUserRequest updatedUserRequest)
+        {
+            var user = await _userRepository.UpdateUser(updatedUserRequest);
+
+            var userResponse = _mapper.Map<UserResponse>(user);
+
+            return userResponse;
         }
     }
 }

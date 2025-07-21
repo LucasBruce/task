@@ -19,6 +19,7 @@ namespace TaskApi.Api.Controllers
         public IActionResult GetAllDuties()
         {
             var duties = _dutyService.GetAllDuties();
+            
             if (duties == null || !duties.Result.Any())
             {
                 return NotFound("No duties found.");

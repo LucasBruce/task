@@ -1,6 +1,6 @@
 namespace TaskApi.Core.Domain.Entities
 {
-    public class Duty : IDutyContract<User, Status>
+    public class Duty
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Title { get; set; } = string.Empty;
