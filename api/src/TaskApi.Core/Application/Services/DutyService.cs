@@ -58,6 +58,8 @@ namespace TaskApi.Core.Application.Services
         {
             var duty = await _dutyRepository.UpdateDuty(updatedDutyRequest);
 
+            Console.WriteLine($"DutyService: Updated Duty with ID {duty.Id}");
+            
             var dutyResponse = _mapper.Map<DutyResponse>(duty);
 
             return dutyResponse;

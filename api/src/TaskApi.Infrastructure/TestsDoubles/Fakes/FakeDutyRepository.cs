@@ -57,7 +57,17 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<Duty> UpdateDuty(UpdatedDutyRequest updatedDutyRequest)
         {
-            throw new NotImplementedException();
+            var duty = FindDuty(new FoundDutyRequest { Id = updatedDutyRequest.Id }).Result;
+
+            if (duty == null)
+            {
+                throw new DllNotFoundException("Task not found.");
+            }
+
+            duty.Title = updatedDutyRequest.Title;
+            duty.Description = updatedDutyRequest.Description;
+
+            return Task.FromResult(duty);
         }
     }
 }
