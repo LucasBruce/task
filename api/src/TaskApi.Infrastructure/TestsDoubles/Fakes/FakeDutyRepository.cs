@@ -24,9 +24,9 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
             return Task.FromResult(dutyResponse);
         }
 
-        public Task<bool> DeleteDuty(FoundDutyRequest foundDutyRequest)
+        public Task<bool> DeleteDuty(FoundDutyBase foundDutyBase)
         {
-            var foundDuty = FindDuty(foundDutyRequest).Result;
+            var foundDuty = FindDuty(foundDutyBase).Result;
 
             if (foundDuty == null)
             {
@@ -38,9 +38,9 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
             return Task.FromResult(true);
         }
 
-        public Task<Duty> FindDuty(FoundDutyRequest foundDutyRequest)
+        public Task<Duty> FindDuty(FoundDutyBase foundDutyBase)
         {
-            var foundDuty = _duties.FirstOrDefault(t => t.Id == foundDutyRequest.Id);
+            var foundDuty = _duties.FirstOrDefault(t => t.Id == foundDutyBase.Id);
 
             if (foundDuty == null)
             {
@@ -57,7 +57,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<Duty> UpdateDuty(UpdatedDutyRequest updatedDutyRequest)
         {
-            var duty = FindDuty(new FoundDutyRequest { Id = updatedDutyRequest.Id }).Result;
+            var duty = FindDuty(updatedDutyRequest).Result;
 
             if (duty == null)
             {

@@ -65,14 +65,14 @@ namespace TaskApi.Api.Controllers
         }
 
         [HttpPost("find")]
-        public IActionResult FindUser([FromBody] FoundUserRequest foundUserRequest)
+        public IActionResult FindUser([FromBody] FoundUserBase foundUserBase)
         {
-            if (foundUserRequest == null)
+            if (foundUserBase == null)
             {
                 return BadRequest("Invalid user request.");
             }
 
-            var userResponse = _userService.FindUser(foundUserRequest);
+            var userResponse = _userService.FindUser(foundUserBase);
 
             if (userResponse == null)
             {
@@ -83,7 +83,7 @@ namespace TaskApi.Api.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteUser([FromBody] FoundUserRequest foundUserRequest)
+        public IActionResult DeleteUser([FromBody] FoundUserBase foundUserRequest)
         {
             if (foundUserRequest == null)
             {

@@ -1,8 +1,6 @@
-using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Application.DTOs.Responses;
+using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Application.Interfaces;
-using TaskApi.Core.Domain.Entities;
-using AutoMapper;
 using TaskApi.Core.Application.Mappings;
 
 namespace TaskApi.Core.Application.Services
@@ -25,16 +23,16 @@ namespace TaskApi.Core.Application.Services
             return DutyProfile.DutyResponseAssembler(dutyReturn);
         }
 
-        public async Task<bool> DeleteDuty(FoundDutyRequest foundDutyRequest)
+        public async Task<bool> DeleteDuty(FoundDutyBase foundDutyBase)
         {
-            var isDeleted = await _dutyRepository.DeleteDuty(foundDutyRequest);
+            var isDeleted = await _dutyRepository.DeleteDuty(foundDutyBase);
 
             return isDeleted;
         }
 
-        public async Task<FoundDutyResponse> FindDuty(FoundDutyRequest foundDutyRequest)
+        public async Task<FoundDutyResponse> FindDuty(FoundDutyBase foundDutyBase)
         {
-            var duty = await _dutyRepository.FindDuty(foundDutyRequest);
+            var duty = await _dutyRepository.FindDuty(foundDutyBase);
 
             return DutyProfile.FoundDutyResponseAssembler(duty);
         }

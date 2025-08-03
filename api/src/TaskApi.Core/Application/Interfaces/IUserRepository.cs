@@ -1,5 +1,4 @@
 using TaskApi.Core.Application.DTOs.Requests;
-using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Domain.Entities;
 
 namespace TaskApi.Core.Application.Interfaces
@@ -9,7 +8,7 @@ namespace TaskApi.Core.Application.Interfaces
         Task<List<User>> GetAllUsers();
         Task<User> CreateUser(User user);
         Task<User> UpdateUser(UpdatedUserRequest updatedUserRequest);
-        Task<User> FindUser(FoundUserRequest foundUserRequest);
-        Task<bool> DeleteUser(FoundUserRequest foundUserRequest);
+        Task<User> FindUser(FoundUserBase foundUserBase);
+        Task<bool> DeleteUser(FoundUserBase foundUserBase);
     }
 }

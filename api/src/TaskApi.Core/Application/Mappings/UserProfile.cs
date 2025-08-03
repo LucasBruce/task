@@ -62,11 +62,11 @@ namespace TaskApi.Core.Application.Mappings
             );
         }
 
-        public static FoundUserRequest FoundUserRequestAssembler(FoundUserResponse foundUserResponse)
+        public static FoundUserBase FoundUserRequestAssembler(FoundUserResponse foundUserResponse)
         {
             var (id, name, corporateEmail) = foundUserResponse with { };
 
-            return new FoundUserRequest
+            return new FoundUserBase
             {
                 Id = id,
                 Name = name,
@@ -74,11 +74,11 @@ namespace TaskApi.Core.Application.Mappings
             };
         }
 
-        public static FoundUserRequest FoundUserRequestAssembler(UpdatedUserRequest updatedUserRequest)
+        public static FoundUserBase FoundUserRequestAssembler(UpdatedUserRequest updatedUserRequest)
         {
             var (id, name, corporateEmail) = updatedUserRequest with { };
 
-            return new FoundUserRequest
+            return new FoundUserBase
             {
                 Id = id,
                 Name = name ?? "",

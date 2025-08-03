@@ -21,18 +21,18 @@ namespace TaskApi.Core.Application.Services
             return UserProfile.UserResponseAssembler(userResponse);
         }
 
-        public async Task<bool> DeleteUser(FoundUserRequest foundUserRequest)
+        public async Task<bool> DeleteUser(FoundUserBase foundUserBase)
         {
-            var foundUserResponse = await FindUser(foundUserRequest);
+            var foundUserResponse = await FindUser(foundUserBase);
 
             var isDeleted = await _userRepository.DeleteUser(UserProfile.FoundUserRequestAssembler(foundUserResponse));
 
             return isDeleted;
         }
 
-        public async Task<FoundUserResponse> FindUser(FoundUserRequest foundUserRequest)
+        public async Task<FoundUserResponse> FindUser(FoundUserBase foundUserBase)
         {
-            var user = await _userRepository.FindUser(foundUserRequest);
+            var user = await _userRepository.FindUser(foundUserBase);
 
             return UserProfile.FoundUserResponseAssembler(user);
         }
