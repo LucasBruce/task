@@ -11,17 +11,9 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<User> CreateUser(User user)
         {
-            var createdUser = new User
-            {
-                Name = user.Name,
-                CorporateEmail = user.CorporateEmail,
-                Job = user.Job,
-                Duties = new List<Duty>()
-            };
+            _users.Add(user);
 
-            _users.Add(createdUser);
-
-            return Task.FromResult(createdUser);
+            return Task.FromResult(user);
         }
 
         public Task<bool> DeleteUser(FoundUserRequest foundUserRequest)
@@ -52,20 +44,20 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<User> UpdateUser(UpdatedUserRequest updatedUserRequest)
         {
-            // var foundUser = _users.FirstOrDefault(element => element.Id == updatedUserRequest.Id);
+            var user = _users.FirstOrDefault(element => element.Id == updatedUserRequest.Id);
 
-            // if (foundUser == null)
-            // {
-            //     throw new NotImplementedException();
-            // }
+            if (user == null)
+            {
+                throw new NotImplementedException();
+            }
 
-            // updatedUserRequest.Name = foundUser.Name ?? updatedUserRequest.Name;
-            // updatedUserRequest.CorporateEmail = foundUser.CorporateEmail ?? updatedUserRequest.CorporateEmail;
-            // updatedUserRequest.Job = foundUser.Job ?? updatedUserRequest.Job;
-            // updatedUserRequest.Duties = updatedUserRequest.Duties ?? foundUser.Duties;
+            user.Id = updatedUserRequest.Id;
+            user.Name = updatedUserRequest.Name;
+            user.CorporateEmail = updatedUserRequest.CorporateEmail;
+            user.Job = updatedUserRequest.Job;
+            user.Duties = updatedUserRequest.Duties ?? new List<Duty>();
 
-            return Task.FromResult(new User());
+            return Task.FromResult(UpdatedUser);
         }
-
     }
 }

@@ -3,30 +3,26 @@ using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Application.Interfaces;
 using TaskApi.Core.Domain.Entities;
 using AutoMapper;
+using TaskApi.Core.Application.Mappings;
 
 namespace TaskApi.Core.Application.Services
 {
     public class DutyService : IDutyService
     {
-        private readonly IMapper _mapper;
-
         private readonly IDutyRepository _dutyRepository;
 
-        public DutyService(IDutyRepository dutyRepository, IMapper mapper)
+        public DutyService(IDutyRepository dutyRepository)
         {
-            _mapper = mapper;
             _dutyRepository = dutyRepository;
         }
 
         public async Task<DutyResponse> CreateDuty(CreatedDutyRequest createdDutyRequest)
         {
-            var duty = _mapper.Map<Duty>(createdDutyRequest);
+            var duty = DutyProfile.DutyAssembler(createdDutyRequest);
 
             var dutyReturn = await _dutyRepository.CreateDuty(duty);
 
-            var dutyResponse = _mapper.Map<DutyResponse>(dutyReturn);
-
-            return dutyResponse;
+            return DutyProfile.DutyResponseAssembler(dutyReturn);
         }
 
         public async Task<bool> DeleteDuty(FoundDutyRequest foundDutyRequest)
@@ -40,18 +36,14 @@ namespace TaskApi.Core.Application.Services
         {
             var duty = await _dutyRepository.FindDuty(foundDutyRequest);
 
-            var dutyResponse = _mapper.Map<FoundDutyResponse>(duty);
-
-            return dutyResponse;
+            return DutyProfile.FoundDutyResponseAssembler(duty);
         }
 
         public async Task<List<DutyResponse>> GetAllDuties()
         {
             var duties = await _dutyRepository.GetAllDuties();
 
-            List<DutyResponse> dutiesResponses = _mapper.Map<List<DutyResponse>>(duties);
-
-            return dutiesResponses;
+            return DutyProfile.DutiesResponseAssembler(duties);
         }
 
         public async Task<DutyResponse> UpdateDuty(UpdatedDutyRequest updatedDutyRequest)
@@ -59,10 +51,8 @@ namespace TaskApi.Core.Application.Services
             var duty = await _dutyRepository.UpdateDuty(updatedDutyRequest);
 
             Console.WriteLine($"DutyService: Updated Duty with ID {duty.Id}");
-            
-            var dutyResponse = _mapper.Map<DutyResponse>(duty);
 
-            return dutyResponse;
+            return DutyProfile.DutyResponseAssembler(duty);
         }
     }
 }
