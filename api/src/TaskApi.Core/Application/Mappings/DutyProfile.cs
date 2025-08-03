@@ -34,14 +34,15 @@ namespace TaskApi.Core.Application.Mappings
         {
             var (title, description, dueDate, status, user) = createdDutyRequest with { };
 
-            return new Duty(
-                Guid.NewGuid(),
-                title,
-                description,
-                dueDate,
-                _statusAssembler(status),
-                UserProfile.UserAssembler(user)
-            );
+            return new Duty
+            {
+                Id = Guid.NewGuid(),
+                Title = title,
+                Description = description,
+                DueDate = dueDate,
+                Status = _statusAssembler(status),
+                User = UserProfile.UserAssembler(user)
+            };
         }
 
         public static DutyResponse DutyResponseAssembler(Duty duty)

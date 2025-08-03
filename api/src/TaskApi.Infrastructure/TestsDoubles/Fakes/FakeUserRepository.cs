@@ -44,20 +44,19 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<User> UpdateUser(UpdatedUserRequest updatedUserRequest)
         {
-            var user = _users.FirstOrDefault(element => element.Id == updatedUserRequest.Id);
+            var user = FindUser(new FoundUserRequest { Id = updatedUserRequest.Id }).Result;
 
             if (user == null)
             {
                 throw new NotImplementedException();
             }
 
-            user.Id = updatedUserRequest.Id;
             user.Name = updatedUserRequest.Name;
             user.CorporateEmail = updatedUserRequest.CorporateEmail;
             user.Job = updatedUserRequest.Job;
             user.Duties = updatedUserRequest.Duties ?? new List<Duty>();
 
-            return Task.FromResult(UpdatedUser);
+            return Task.FromResult(user);
         }
     }
 }

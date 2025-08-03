@@ -12,13 +12,13 @@ namespace TaskApi.Core.Application.Mappings
             var (Name, CorporateEmail, Job, Duties) = createdUserRequest with { };
 
             return new User
-            (
-                Id: Guid.NewGuid(),
-                Name: Name,
-                CorporateEmail: CorporateEmail,
-                Job: Job,
-                Duties: Duties ?? new List<Duty>()
-            );
+            {
+                Id = Guid.NewGuid(),
+                Name = Name,
+                CorporateEmail = CorporateEmail,
+                Job = Job,
+                Duties = Duties ?? new List<Duty>()
+            };
         }
 
         public static UserResponse UserResponseAssembler(User user)
@@ -67,11 +67,11 @@ namespace TaskApi.Core.Application.Mappings
             var (id, name, corporateEmail) = foundUserResponse with { };
 
             return new FoundUserRequest
-            (
-                id,
-                name,
-                corporateEmail
-            );
+            {
+                Id = id,
+                Name = name,
+                CorporateEmail = corporateEmail
+            };
         }
 
         public static FoundUserRequest FoundUserRequestAssembler(UpdatedUserRequest updatedUserRequest)
@@ -79,11 +79,11 @@ namespace TaskApi.Core.Application.Mappings
             var (id, name, corporateEmail) = updatedUserRequest with { };
 
             return new FoundUserRequest
-            (
-                id,
-                name ?? "",
-                corporateEmail ?? ""
-            );
+            {
+                Id = id,
+                Name = name ?? "",
+                CorporateEmail = corporateEmail ?? ""
+            };
         }
     }
 }

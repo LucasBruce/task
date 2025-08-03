@@ -8,15 +8,20 @@ namespace TaskApi.Core.Domain.Entities
     );
 
     public record class Duty
-    (
-         Guid Id,
-         string Title,
-         string Description,
-         DateTime DueDate,
-         Status Status,
-         User User
-    )
     {
+        public Guid Id { get; init; } = Guid.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public DateTime DueDate { get; set; } = DateTime.MinValue;
+        public Status Status { get; set; } = new Status(false, false, false);
+        public User User { get; set; } = new User
+        {
+            Id = Guid.Empty,
+            Name = string.Empty,
+            CorporateEmail = string.Empty,
+            Job = string.Empty,
+            Duties = new List<Duty>()
+        };
         public void Deconstruct(out Guid id, out string title, out string description, out User user)
         {
             id = Id;
@@ -24,6 +29,7 @@ namespace TaskApi.Core.Domain.Entities
             description = Description;
             user = User;
         }
+
         public void Deconstruct(out Guid id, out string title, out string description, out DateTime dueDate, out Status status, out User user)
         {
             id = Id;

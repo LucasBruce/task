@@ -1,9 +1,9 @@
 namespace TaskApi.Core.Application.DTOs.Requests
 {
     public record class FoundUserRequest
-    (
-        Guid Id,
-        string Name,
-        string CorporateEmail
-    );
+    {
+        public Guid Id { get; init; } = Guid.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string CorporateEmail { get; set; } = string.Empty;
+    }
 }

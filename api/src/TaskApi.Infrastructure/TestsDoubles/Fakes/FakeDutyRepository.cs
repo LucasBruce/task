@@ -1,7 +1,7 @@
 using TaskApi.Core.Domain.Entities;
 using TaskApi.Core.Application.Interfaces;
-using TaskApi.Infrastructure.TestsDoubles.Stubs;
 using TaskApi.Core.Application.DTOs.Requests;
+using TaskApi.Infrastructure.TestsDoubles.Stubs;
 
 namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 {

@@ -46,9 +46,7 @@ namespace TaskApi.Core.Application.Services
 
         public async Task<UserResponse> UpdateUser(UpdatedUserRequest updatedUserRequest)
         {
-            var foundUser = await FindUser(UserProfile.FoundUserRequestAssembler(updatedUserRequest));
-
-            var user = await _userRepository.UpdateUser(foundUser);
+            var user = await _userRepository.UpdateUser(updatedUserRequest);
 
             return UserProfile.UserResponseAssembler(user);
         }
