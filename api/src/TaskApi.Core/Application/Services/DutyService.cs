@@ -2,6 +2,7 @@ using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Application.Interfaces;
 using TaskApi.Core.Application.Mappings;
+using TaskApi.Core.Domain.Exception;
 
 namespace TaskApi.Core.Application.Services
 {
@@ -47,8 +48,6 @@ namespace TaskApi.Core.Application.Services
         public async Task<DutyResponse> UpdateDuty(UpdatedDutyRequest updatedDutyRequest)
         {
             var duty = await _dutyRepository.UpdateDuty(updatedDutyRequest);
-
-            Console.WriteLine($"DutyService: Updated Duty with ID {duty.Id}");
 
             return DutyProfile.DutyResponseAssembler(duty);
         }

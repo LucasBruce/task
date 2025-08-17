@@ -2,6 +2,7 @@ using TaskApi.Core.Domain.Entities;
 using TaskApi.Core.Application.Interfaces;
 using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Infrastructure.TestsDoubles.Stubs;
+using TaskApi.Core.Domain.Exception;
 
 namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 {
@@ -13,10 +14,12 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
         {
             var dutyResponse = new Duty
             {
+                Id = duty.Id,
                 Title = duty.Title,
                 Description = duty.Description,
                 DueDate = duty.DueDate,
                 Status = duty.Status,
+                Owner = duty.Owner
             };
 
             _duties.Add(dutyResponse);
@@ -28,11 +31,6 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
         {
             var foundDuty = FindDuty(foundDutyBase).Result;
 
-            if (foundDuty == null)
-            {
-                return Task.FromResult(false);
-            }
-
             _duties.Remove(foundDuty);
             
             return Task.FromResult(true);
@@ -40,11 +38,20 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<Duty> FindDuty(FoundDutyBase foundDutyBase)
         {
-            var foundDuty = _duties.FirstOrDefault(t => t.Id == foundDutyBase.Id);
+            Duty? foundDuty = null;
+
+            foreach (var duty in _duties)
+            {
+                if (duty.Id == foundDutyBase.Id)
+                {
+                    foundDuty = duty;
+                    break;
+                }
+            }
 
             if (foundDuty == null)
             {
-                throw new DllNotFoundException("Task not found.");
+                throw new DutyNotFoundException(foundDutyBase.Id);
             }
 
             return Task.FromResult(foundDuty);
@@ -59,13 +66,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
         {
             var duty = FindDuty(updatedDutyRequest).Result;
 
-            if (duty == null)
-            {
-                throw new DllNotFoundException("Task not found.");
-            }
-
-            duty.Title = updatedDutyRequest.Title;
-            duty.Description = updatedDutyRequest.Description;
+            duty.Title = updatedDutyRequest.Title ?? duty.Title;
+            duty.Description = updatedDutyRequest.Description ?? duty.Description;
+            duty.DueDate = updatedDutyRequest.DueDate ?? duty.DueDate;
+            duty.Status = updatedDutyRequest.Status ?? duty.Status;
+            duty.Owner = updatedDutyRequest.Owner ?? duty.Owner;
 
             return Task.FromResult(duty);
         }

@@ -1,5 +1,4 @@
 using TaskApi.Core.Application.DTOs.Requests;
-using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Domain.Entities;
 
 namespace TaskApi.Core.Application.Interfaces

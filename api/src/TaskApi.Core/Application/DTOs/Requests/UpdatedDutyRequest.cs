@@ -6,13 +6,13 @@ namespace TaskApi.Core.Application.DTOs.Requests
     {
         public DateTime? DueDate { get; set; }
         public Status? Status { get; set; }
-        public User? User { get; set; }
-        public void Deconstruct(out Guid id, out string title, out string description, out DateTime? dueDate, out Status? status, out User? user)
+        public Owner? Owner { get; set; }
+        public void Deconstruct(out Guid id, out string title, out string? description, out DateTime? dueDate, out Status? status, out Owner? owner)
         {
             base.Deconstruct(out id, out title, out description);
             dueDate = DueDate;
             status = Status;
-            user = User;
+            owner = Owner;
         }
     }
 }

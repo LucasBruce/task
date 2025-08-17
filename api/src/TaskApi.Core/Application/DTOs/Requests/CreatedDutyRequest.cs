@@ -1,4 +1,6 @@
 
+using TaskApi.Core.Domain.Entities;
+
 namespace TaskApi.Core.Application.DTOs.Requests
 {
     public record struct CreateDutyStatus
@@ -11,13 +13,13 @@ namespace TaskApi.Core.Application.DTOs.Requests
     {
         public DateTime DueDate { get; set; }
         public CreateDutyStatus Status { get; set; }
-        public CreatedUserRequest? User { get; set; }
-        public void Deconstruct(out string title, out string description, out DateTime dueDate, out CreateDutyStatus status, out CreatedUserRequest? user)
+        public Owner? Owner { get; set; }
+        public void Deconstruct(out string title, out string? description, out DateTime dueDate, out CreateDutyStatus status, out Owner? owner)
         {
             base.Deconstruct(out title, out description);
             dueDate = DueDate;
             status = Status;
-            user = User;
+            owner = Owner;
         }
     };
 }

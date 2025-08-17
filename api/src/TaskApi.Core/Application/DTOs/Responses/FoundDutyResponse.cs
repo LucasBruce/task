@@ -9,6 +9,6 @@ namespace TaskApi.Core.Application.DTOs.Responses
         string Description,
         DateTime DueDate,
         Status Status,
-        UserResponse UserResponse
+        Owner Owner
     );
 }

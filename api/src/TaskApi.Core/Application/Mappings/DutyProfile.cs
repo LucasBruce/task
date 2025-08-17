@@ -18,47 +18,44 @@ namespace TaskApi.Core.Application.Mappings
             );
         }
 
-        public static Owner OwnerAssembler(User user)
-        {
-            var (Id, Name, Job) = user with { };
-
-            return new Owner
-            (
-                Id,
-                Name,
-                Job
-            );
-        }
-
         public static Duty DutyAssembler(CreatedDutyRequest createdDutyRequest)
         {
-            var (title, description, dueDate, status, user) = createdDutyRequest with { };
+            var (title, description, dueDate, status, owner) = createdDutyRequest with { };
+
+            var (id, name, corporateEmail, job) = (owner ?? new Owner())with { };
 
             return new Duty
             {
                 Id = Guid.NewGuid(),
-                Title = title,
-                Description = description,
+                Title = title ?? string.Empty,
+                Description = description ?? string.Empty,
                 DueDate = dueDate,
                 Status = _statusAssembler(status),
-                User = UserProfile.UserAssembler(user)
+                Owner = new Owner
+                {
+                    Id = id,
+                    Name = name,
+                    CorporateEmail = corporateEmail,
+                    Job = job,
+                }
             };
         }
 
         public static DutyResponse DutyResponseAssembler(Duty duty)
         {
-            var (id, title, description, user) = duty with { };
+
+            var (id, title, description, owner) = duty with { };
 
             return new DutyResponse(
                 id,
                 title,
                 description,
-                OwnerAssembler(user)
+                owner
             );
         }
 
         public static List<DutyResponse> DutiesResponseAssembler(List<Duty> duties)
-        {
+        {   
             List<DutyResponse> dutiesResponse = new List<DutyResponse>();
 
             foreach (var duty in duties)
@@ -71,7 +68,7 @@ namespace TaskApi.Core.Application.Mappings
 
         public static FoundDutyResponse FoundDutyResponseAssembler(Duty duty)
         {
-            var (id, title, description, dueDate, status, user) = duty with { };
+            var (id, title, description, dueDate, status, owner) = duty with { };
 
             return new FoundDutyResponse(
                 id,
@@ -79,9 +76,8 @@ namespace TaskApi.Core.Application.Mappings
                 description,
                 dueDate,
                 status,
-                UserProfile.UserResponseAssembler(user)
+                owner
             );
         }
     }
 }
-             

@@ -6,7 +6,6 @@ namespace TaskApi.Core.Application.Mappings
 {
     public static class UserProfile
     {
-
         public static User UserAssembler(CreatedUserRequest createdUserRequest)
         {
             var (Name, CorporateEmail, Job, Duties) = createdUserRequest with { };
@@ -14,9 +13,9 @@ namespace TaskApi.Core.Application.Mappings
             return new User
             {
                 Id = Guid.NewGuid(),
-                Name = Name,
-                CorporateEmail = CorporateEmail,
-                Job = Job,
+                Name = Name ?? string.Empty,
+                CorporateEmail = CorporateEmail ?? string.Empty,
+                Job = Job ?? string.Empty,
                 Duties = Duties ?? new List<Duty>()
             };
         }
@@ -32,7 +31,7 @@ namespace TaskApi.Core.Application.Mappings
                  id,
                  name,
                  job,
-                 DutyProfile.DutiesResponseAssembler(userObj.Duties)
+                 DutyProfile.DutiesResponseAssembler(userObj.Duties ?? new List<Duty>())
             );
         }
 
@@ -71,18 +70,6 @@ namespace TaskApi.Core.Application.Mappings
                 Id = id,
                 Name = name,
                 CorporateEmail = corporateEmail
-            };
-        }
-
-        public static FoundUserBase FoundUserRequestAssembler(UpdatedUserRequest updatedUserRequest)
-        {
-            var (id, name, corporateEmail) = updatedUserRequest with { };
-
-            return new FoundUserBase
-            {
-                Id = id,
-                Name = name ?? "",
-                CorporateEmail = corporateEmail ?? ""
             };
         }
     }

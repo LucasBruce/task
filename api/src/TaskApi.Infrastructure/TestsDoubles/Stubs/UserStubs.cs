@@ -13,8 +13,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Software Engineer",
             Duties = new List<Duty>
             {
-               DutyStubs.Task1,
-               DutyStubs.Task3,
+              DutyStubs.Task1,
+              DutyStubs.Task3,
             }
         };
         public static User User2 => new User
@@ -25,8 +25,8 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Data Analyst",
             Duties = new List<Duty>
             {
-            DutyStubs.Task4,
-            DutyStubs.Task5,
+              DutyStubs.Task4,
+              DutyStubs.Task5,
             }
         };
 
@@ -38,7 +38,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "UX Designer",
             Duties = new List<Duty>
             {
-            DutyStubs.Task6,
+              DutyStubs.Task6,
             }
         };
 
@@ -50,7 +50,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Product Owner",
             Duties = new List<Duty>
             {
-            DutyStubs.Task7
+              DutyStubs.Task7
             }
         };
 
@@ -62,7 +62,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "QA Engineer",
             Duties = new List<Duty>
             {
-            DutyStubs.Task8,
+              DutyStubs.Task8,
             }
         };
 
@@ -74,7 +74,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "DevOps Engineer",
             Duties = new List<Duty>
             {
-            DutyStubs.Task9,
+              DutyStubs.Task9,
             }
         };
 
@@ -86,7 +86,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Marketing Specialist",
             Duties = new List<Duty>
             {
-            DutyStubs.Task10,
+              DutyStubs.Task10,
             }
         };
 
@@ -98,7 +98,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Sales Executive",
             Duties = new List<Duty>
             {
-            DutyStubs.Task11,
+              DutyStubs.Task11,
             }
         };
 
@@ -110,7 +110,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "HR Manager",
             Duties = new List<Duty>
             {
-            DutyStubs.Task12
+              DutyStubs.Task12
             }
         };
 
@@ -122,7 +122,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Software Engineer",
             Duties = new List<Duty>
             {
-            DutyStubs.Task13
+              DutyStubs.Task13
             }
         };
 
@@ -134,7 +134,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Graphic Designer",
             Duties = new List<Duty>
             {
-            DutyStubs.Task14
+              DutyStubs.Task14
             }
         };
 
@@ -146,7 +146,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Content Writer",
             Duties = new List<Duty>
             {
-            DutyStubs.Task15
+              DutyStubs.Task15
             }
         };
 
@@ -158,7 +158,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Project Manager",
             Duties = new List<Duty>
             {
-            DutyStubs.Task16
+              DutyStubs.Task16
             }
         };
 
@@ -170,7 +170,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "IT Support",
             Duties = new List<Duty>
             {
-            DutyStubs.Task17
+              DutyStubs.Task17
             }
         };
 
@@ -182,11 +182,11 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
             Job = "Marketing Manager",
             Duties = new List<Duty>
             {
-            DutyStubs.Task18,
-            DutyStubs.Task19,
+              DutyStubs.Task18,
+              DutyStubs.Task19,
             }
         };
-       
+
         public static List<User> GetAll()
         {
 

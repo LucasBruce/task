@@ -2,6 +2,7 @@ using TaskApi.Core.Domain.Entities;
 using TaskApi.Core.Application.Interfaces;
 using TaskApi.Infrastructure.TestsDoubles.Stubs;
 using TaskApi.Core.Application.DTOs.Requests;
+using TaskApi.Core.Domain.Exception;
 
 namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 {
@@ -18,11 +19,9 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<bool> DeleteUser(FoundUserBase foundUserBase)
         {
-            var userR = FindUser(foundUserBase).Result;
+            var user = FindUser(foundUserBase).Result;
 
-            _users.Remove(userR);
-
-            return Task.FromResult(true);
+            return Task.FromResult(_users.Remove(user));
         }
 
         public Task<User> FindUser(FoundUserBase foundUserBase)
@@ -40,7 +39,7 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
             if (foundUser == null)
             {
-                throw new NotImplementedException();
+                throw new UserNotFoundException(foundUserBase.Id);
             }
 
             return Task.FromResult(foundUser);
@@ -54,11 +53,6 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
         public Task<User> UpdateUser(UpdatedUserRequest updatedUserRequest)
         {
             var user = FindUser(updatedUserRequest).Result;
-
-            if (user == null)
-            {
-                throw new NotImplementedException();
-            }
 
             user.Name = updatedUserRequest.Name ?? user.Name;
             user.CorporateEmail = updatedUserRequest.CorporateEmail ?? user.CorporateEmail;

@@ -19,7 +19,7 @@ namespace TaskApi.Api.Controllers
         public IActionResult GetAllDuties()
         {
             var duties = _dutyService.GetAllDuties();
-            
+
             if (duties == null || !duties.Result.Any())
             {
                 return NotFound("No duties found.");
@@ -67,6 +67,10 @@ namespace TaskApi.Api.Controllers
         [HttpPost("find")]
         public IActionResult FindDuty([FromBody] FoundDutyBase foundDutyBase)
         {
+            if (foundDutyBase == null)
+            {
+                return NotFound("Request not found.");
+            }
 
             var dutyResponse = _dutyService.FindDuty(foundDutyBase);
 
@@ -79,7 +83,7 @@ namespace TaskApi.Api.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteDuty( [FromBody] FoundDutyBase foundDutyBase)
+        public IActionResult DeleteDuty([FromBody] FoundDutyBase foundDutyBase)
         {
 
             var isDeleted = _dutyService.DeleteDuty(foundDutyBase);

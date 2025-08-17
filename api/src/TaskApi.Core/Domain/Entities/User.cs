@@ -2,7 +2,7 @@ namespace TaskApi.Core.Domain.Entities
 {
     public record class User
     {
-        public Guid Id { get; init; } = Guid.Empty;
+        public Guid Id { get; set; } = Guid.Empty;
         public string Name { get; set; } = string.Empty;
         public string CorporateEmail { get; set; } = string.Empty;
         public string Job { get; set; } = string.Empty;

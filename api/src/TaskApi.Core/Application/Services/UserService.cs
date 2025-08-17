@@ -2,6 +2,7 @@ using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Application.Interfaces;
 using TaskApi.Core.Application.Mappings;
+using TaskApi.Core.Domain.Exception;
 
 namespace TaskApi.Core.Application.Services
 {
@@ -33,6 +34,11 @@ namespace TaskApi.Core.Application.Services
         public async Task<FoundUserResponse> FindUser(FoundUserBase foundUserBase)
         {
             var user = await _userRepository.FindUser(foundUserBase);
+
+            if (user == null)
+            {
+                throw new UserNotFoundException(foundUserBase.Id);
+            }
 
             return UserProfile.FoundUserResponseAssembler(user);
         }

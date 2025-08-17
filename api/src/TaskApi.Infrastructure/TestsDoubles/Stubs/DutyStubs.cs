@@ -17,8 +17,15 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = true,
                 Completed = false
             },
-            User = UserStubs.User1
+            Owner = new Owner
+            {
+                Id = UserStubs.User1.Id,
+                Name = UserStubs.User1.Name,
+                CorporateEmail = UserStubs.User1.CorporateEmail,
+                Job = UserStubs.User1.Job
+            }
         };
+        
         public static readonly Duty Task3 = new Duty
         {
             Id = Guid.NewGuid(),
@@ -31,7 +38,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User1
+            Owner = new Owner
+            {
+                Id = UserStubs.User1.Id,
+                Name = UserStubs.User1.Name,
+                CorporateEmail = UserStubs.User1.CorporateEmail,
+                Job = UserStubs.User1.Job
+            }
         };
 
         public static readonly Duty Task4 = new Duty
@@ -46,7 +59,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User2
+            Owner = new Owner
+            {
+                Id = UserStubs.User2.Id,
+                Name = UserStubs.User2.Name,
+                CorporateEmail = UserStubs.User2.CorporateEmail,
+                Job = UserStubs.User2.Job
+            }
         };
 
         public static readonly Duty Task5 = new Duty
@@ -61,7 +80,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User2
+            Owner = new Owner
+            {
+                Id = UserStubs.User2.Id,
+                Name = UserStubs.User2.Name,
+                CorporateEmail = UserStubs.User2.CorporateEmail,
+                Job = UserStubs.User2.Job
+            }
         };
 
         public static readonly Duty Task6 = new Duty
@@ -76,7 +101,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User3
+            Owner = new Owner
+            {
+                Id = UserStubs.User3.Id,
+                Name = UserStubs.User3.Name,
+                CorporateEmail = UserStubs.User3.CorporateEmail,
+                Job = UserStubs.User3.Job
+            }
         };
 
         public static readonly Duty Task7 = new Duty
@@ -91,7 +122,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User4
+            Owner = new Owner
+            {
+                Id = UserStubs.User4.Id,
+                Name = UserStubs.User4.Name,
+                CorporateEmail = UserStubs.User4.CorporateEmail,
+                Job = UserStubs.User4.Job
+            }
         };
 
         public static readonly Duty Task8 = new Duty
@@ -106,7 +143,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User5
+            Owner = new Owner
+            {
+                Id = UserStubs.User5.Id,
+                Name = UserStubs.User5.Name,
+                CorporateEmail = UserStubs.User5.CorporateEmail,
+                Job = UserStubs.User5.Job
+            }
         };
 
         public static readonly Duty Task9 = new Duty
@@ -121,7 +164,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User6
+            Owner = new Owner
+            {
+                Id = UserStubs.User6.Id,
+                Name = UserStubs.User6.Name,
+                CorporateEmail = UserStubs.User6.CorporateEmail,
+                Job = UserStubs.User6.Job
+            }
         };
 
         public static readonly Duty Task10 = new Duty
@@ -136,7 +185,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User7
+            Owner = new Owner
+            {
+                Id = UserStubs.User7.Id,
+                Name = UserStubs.User7.Name,
+                CorporateEmail = UserStubs.User7.CorporateEmail,
+                Job = UserStubs.User7.Job
+            }
         };
 
         public static readonly Duty Task11 = new Duty
@@ -151,7 +206,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User8
+            Owner = new Owner
+            {
+                Id = UserStubs.User8.Id,
+                Name = UserStubs.User8.Name,
+                CorporateEmail = UserStubs.User8.CorporateEmail,
+                Job = UserStubs.User8.Job
+            }
         };
 
         public static readonly Duty Task12 = new Duty
@@ -166,7 +227,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User9
+            Owner = new Owner
+            {
+                Id = UserStubs.User9.Id,
+                Name = UserStubs.User9.Name,
+                CorporateEmail = UserStubs.User9.CorporateEmail,
+                Job = UserStubs.User9.Job
+            }
         };
 
         public static readonly Duty Task13 = new Duty
@@ -181,13 +248,19 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User10
+            Owner = new Owner
+            {
+                Id = UserStubs.User10.Id,
+                Name = UserStubs.User10.Name,
+                CorporateEmail = UserStubs.User10.CorporateEmail,
+                Job = UserStubs.User10.Job
+            }
         };
 
         public static readonly Duty Task14 = new Duty
         {
             Id = Guid.NewGuid(),
-            Title = "Conduct User Research",
+            Title = "Conduct Owner Research",
             Description = "Plan and conduct user research sessions to gather feedback on the new feature.",
             DueDate = DateTime.Now.AddDays(20),
             Status = new Status
@@ -196,7 +269,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User11
+            Owner = new Owner
+            {
+                Id = UserStubs.User11.Id,
+                Name = UserStubs.User11.Name,
+                CorporateEmail = UserStubs.User11.CorporateEmail,
+                Job = UserStubs.User11.Job
+            }
         };
 
         public static readonly Duty Task15 = new Duty
@@ -211,7 +290,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User12
+            Owner = new Owner
+            {
+                Id = UserStubs.User12.Id,
+                Name = UserStubs.User12.Name,
+                CorporateEmail = UserStubs.User12.CorporateEmail,
+                Job = UserStubs.User12.Job
+            }
         };
 
         public static readonly Duty Task16 = new Duty
@@ -226,7 +311,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User13
+            Owner = new Owner
+            {
+                Id = UserStubs.User13.Id,
+                Name = UserStubs.User13.Name,
+                CorporateEmail = UserStubs.User13.CorporateEmail,
+                Job = UserStubs.User13.Job
+            }
         };
 
         public static readonly Duty Task17 = new Duty
@@ -241,13 +332,19 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User14
+            Owner = new Owner
+            {
+                Id = UserStubs.User14.Id,
+                Name = UserStubs.User14.Name,
+                CorporateEmail = UserStubs.User14.CorporateEmail,
+                Job = UserStubs.User14.Job
+            }
         };
 
         public static readonly Duty Task18 = new Duty
         {
             Id = Guid.NewGuid(),
-            Title = "Conduct User Interviews",
+            Title = "Conduct Owner Interviews",
             Description = "Schedule and conduct interviews with users to gather feedback.",
             DueDate = DateTime.Now.AddDays(10),
             Status = new Status
@@ -256,13 +353,19 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User15
+            Owner = new Owner
+            {
+                Id = UserStubs.User15.Id,
+                Name = UserStubs.User15.Name,
+                CorporateEmail = UserStubs.User15.CorporateEmail,
+                Job = UserStubs.User15.Job
+            }
         };
 
         public static readonly Duty Task19 = new Duty
         {
             Id = Guid.NewGuid(),
-            Title = "Create User Personas",
+            Title = "Create Owner Personas",
             Description = "Develop user personas based on research findings.",
             DueDate = DateTime.Now.AddDays(12),
             Status = new Status
@@ -271,7 +374,13 @@ namespace TaskApi.Infrastructure.TestsDoubles.Stubs
                 InProgress = false,
                 Completed = true
             },
-            User = UserStubs.User15
+            Owner = new Owner
+            {
+                Id = UserStubs.User15.Id,
+                Name = UserStubs.User15.Name,
+                CorporateEmail = UserStubs.User15.CorporateEmail,
+                Job = UserStubs.User15.Job
+            }
         };
       
     
