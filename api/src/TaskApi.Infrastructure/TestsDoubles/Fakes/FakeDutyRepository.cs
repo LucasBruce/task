@@ -1,7 +1,8 @@
 using TaskApi.Core.Domain.Entities;
+using TaskApi.Core.Domain.Exception;
 using TaskApi.Core.Application.Interfaces;
-using TaskApi.Infrastructure.TestsDoubles.Stubs;
 using TaskApi.Core.Application.DTOs.Requests;
+using TaskApi.Infrastructure.TestsDoubles.Stubs;
 
 namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 {
@@ -13,10 +14,12 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
         {
             var dutyResponse = new Duty
             {
+                Id = duty.Id,
                 Title = duty.Title,
                 Description = duty.Description,
                 DueDate = duty.DueDate,
                 Status = duty.Status,
+                Owner = duty.Owner
             };
 
             _duties.Add(dutyResponse);
@@ -24,27 +27,31 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
             return Task.FromResult(dutyResponse);
         }
 
-        public Task<bool> DeleteDuty(FoundDutyRequest foundDutyRequest)
+        public Task<bool> DeleteDuty(FoundDutyBase foundDutyBase)
         {
-            var foundDuty = FindDuty(foundDutyRequest).Result;
-
-            if (foundDuty == null)
-            {
-                return Task.FromResult(false);
-            }
+            var foundDuty = FindDuty(foundDutyBase).Result;
 
             _duties.Remove(foundDuty);
             
             return Task.FromResult(true);
         }
 
-        public Task<Duty> FindDuty(FoundDutyRequest foundDutyRequest)
+        public Task<Duty> FindDuty(FoundDutyBase foundDutyBase)
         {
-            var foundDuty = _duties.FirstOrDefault(t => t.Id == foundDutyRequest.Id);
+            Duty? foundDuty = null;
+
+            foreach (var duty in _duties)
+            {
+                if (duty.Id == foundDutyBase.Id)
+                {
+                    foundDuty = duty;
+                    break;
+                }
+            }
 
             if (foundDuty == null)
             {
-                throw new DllNotFoundException("Task not found.");
+                throw new DutyNotFoundException(foundDutyBase.Id);
             }
 
             return Task.FromResult(foundDuty);
@@ -57,7 +64,15 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<Duty> UpdateDuty(UpdatedDutyRequest updatedDutyRequest)
         {
-            throw new NotImplementedException();
+            var duty = FindDuty(updatedDutyRequest).Result;
+
+            duty.Title = updatedDutyRequest.Title ?? duty.Title;
+            duty.Description = updatedDutyRequest.Description ?? duty.Description;
+            duty.DueDate = updatedDutyRequest.DueDate ?? duty.DueDate;
+            duty.Status = updatedDutyRequest.Status ?? duty.Status;
+            duty.Owner = updatedDutyRequest.Owner ?? duty.Owner;
+
+            return Task.FromResult(duty);
         }
     }
 }

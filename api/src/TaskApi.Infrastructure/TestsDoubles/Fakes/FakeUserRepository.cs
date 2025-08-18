@@ -2,6 +2,7 @@ using TaskApi.Core.Domain.Entities;
 using TaskApi.Core.Application.Interfaces;
 using TaskApi.Infrastructure.TestsDoubles.Stubs;
 using TaskApi.Core.Application.DTOs.Requests;
+using TaskApi.Core.Domain.Exception;
 
 namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 {
@@ -11,35 +12,34 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<User> CreateUser(User user)
         {
-            var createdUser = new User
+            _users.Add(user);
+
+            return Task.FromResult(user);
+        }
+
+        public Task<bool> DeleteUser(FoundUserBase foundUserBase)
+        {
+            var user = FindUser(foundUserBase).Result;
+
+            return Task.FromResult(_users.Remove(user));
+        }
+
+        public Task<User> FindUser(FoundUserBase foundUserBase)
+        {
+            User? foundUser = null;
+
+            foreach (var user in _users)
             {
-                Name = user.Name,
-                CorporateEmail = user.CorporateEmail,
-                Job = user.Job,
-                Duties = new List<Duty>()
-            };
-
-            _users.Add(createdUser);
-
-            return Task.FromResult(createdUser);
-        }
-
-        public Task<bool> DeleteUser(FoundUserRequest foundUserRequest)
-        {
-            var userR = FindUser(foundUserRequest).Result;
-
-            _users.Remove(userR);
-
-            return Task.FromResult(true);
-        }
-
-        public Task<User> FindUser(FoundUserRequest foundUserRequest)
-        {
-            var foundUser = _users.FirstOrDefault(element => element.Id == foundUserRequest.Id);
+                if (user.Id == foundUserBase.Id)
+                {
+                    foundUser = user;
+                    break;
+                }
+            }
 
             if (foundUser == null)
             {
-                throw new NotImplementedException();
+                throw new UserNotFoundException(foundUserBase.Id);
             }
 
             return Task.FromResult(foundUser);
@@ -52,20 +52,14 @@ namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 
         public Task<User> UpdateUser(UpdatedUserRequest updatedUserRequest)
         {
-            // var foundUser = _users.FirstOrDefault(element => element.Id == updatedUserRequest.Id);
+            var user = FindUser(updatedUserRequest).Result;
 
-            // if (foundUser == null)
-            // {
-            //     throw new NotImplementedException();
-            // }
+            user.Name = updatedUserRequest.Name ?? user.Name;
+            user.CorporateEmail = updatedUserRequest.CorporateEmail ?? user.CorporateEmail;
+            user.Job = updatedUserRequest.Job ?? user.Job;
+            user.Duties = updatedUserRequest.Duties ?? user.Duties;
 
-            // updatedUserRequest.Name = foundUser.Name ?? updatedUserRequest.Name;
-            // updatedUserRequest.CorporateEmail = foundUser.CorporateEmail ?? updatedUserRequest.CorporateEmail;
-            // updatedUserRequest.Job = foundUser.Job ?? updatedUserRequest.Job;
-            // updatedUserRequest.Duties = updatedUserRequest.Duties ?? foundUser.Duties;
-
-            return Task.FromResult(new User());
+            return Task.FromResult(user);
         }
-
     }
 }

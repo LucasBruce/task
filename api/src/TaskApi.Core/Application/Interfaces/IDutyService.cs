@@ -8,7 +8,7 @@ namespace TaskApi.Core.Application.Interfaces
         Task<List<DutyResponse>> GetAllDuties();
         Task<DutyResponse> CreateDuty(CreatedDutyRequest createdDutyRequest);
         Task<DutyResponse> UpdateDuty(UpdatedDutyRequest updatedDutyRequest);
-        Task<FoundDutyResponse> FindDuty(FoundDutyRequest foundDutyRequest);
-        Task<bool> DeleteDuty(FoundDutyRequest foundDutyRequest);
+        Task<FoundDutyResponse> FindDuty(FoundDutyBase foundDutyBase);
+        Task<bool> DeleteDuty(FoundDutyBase foundDutyBase);
     }
 }

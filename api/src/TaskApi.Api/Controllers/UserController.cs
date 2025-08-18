@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskApi.Core.Application.Interfaces;
 using TaskApi.Core.Application.DTOs.Requests;
+using TaskApi.Core.Domain.Exception;
+using System.Threading.Tasks;
 
 namespace TaskApi.Api.Controllers
 {
@@ -9,6 +11,8 @@ namespace TaskApi.Api.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+
+        private readonly static string _Message = "Usuário é de Preenchimento Obrigatório.";
 
         public UserController(IUserService userService)
         {
@@ -19,11 +23,6 @@ namespace TaskApi.Api.Controllers
         public IActionResult GetAllUsers()
         {
             var users = _userService.GetAllUsers();
-            
-            if (users == null || !users.Result.Any())
-            {
-                return NotFound("No users found.");
-            }
 
             return Ok(users.Result);
         }
@@ -33,15 +32,10 @@ namespace TaskApi.Api.Controllers
         {
             if (createdUserRequest == null)
             {
-                return BadRequest("Invalid user data.");
+                return BadRequest(_Message);
             }
 
             var userResponse = _userService.CreateUser(createdUserRequest);
-
-            if (userResponse == null)
-            {
-                return BadRequest("Failed to create user.");
-            }
 
             return CreatedAtAction(nameof(FindUser), userResponse.Result);
         }
@@ -51,54 +45,40 @@ namespace TaskApi.Api.Controllers
         {
             if (updatedUserRequest == null)
             {
-                return BadRequest("Invalid user data.");
+                return BadRequest(_Message);
             }
 
             var userResponse = _userService.UpdateUser(updatedUserRequest);
-
-            if (userResponse == null)
-            {
-                return NotFound("User not found.");
-            }
 
             return Ok(userResponse.Result);
         }
 
         [HttpPost("find")]
-        public IActionResult FindUser([FromBody] FoundUserRequest foundUserRequest)
+        public async Task<IActionResult> FindUser([FromBody] FoundUserBase foundUserBase)
         {
-            if (foundUserRequest == null)
+            if (foundUserBase == null)
             {
-                return BadRequest("Invalid user request.");
+                return BadRequest(_Message);
             }
 
-            var userResponse = _userService.FindUser(foundUserRequest);
+            var userResponse = await _userService.FindUser(foundUserBase);
 
-            if (userResponse == null)
-            {
-                return NotFound("User not found.");
-            }
+            return Ok(userResponse);
 
-            return Ok(userResponse.Result);
         }
 
         [HttpDelete]
-        public IActionResult DeleteUser([FromBody] FoundUserRequest foundUserRequest)
+        public IActionResult DeleteUser([FromBody] FoundUserBase foundUserRequest)
         {
             if (foundUserRequest == null)
             {
-                return BadRequest("Invalid user request.");
+                return BadRequest(_Message);
             }
 
-            var isDeleted = _userService.DeleteUser(foundUserRequest);
-
-            if (!isDeleted.Result)
-            {
-                return NotFound("User not found or could not be deleted.");
-            }
+            _userService.DeleteUser(foundUserRequest);
 
             return NoContent();
         }
-        
+
     }
 }

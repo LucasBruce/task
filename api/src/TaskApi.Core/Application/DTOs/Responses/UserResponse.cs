@@ -1,11 +1,18 @@
-
 namespace TaskApi.Core.Application.DTOs.Responses
 {
-    public class UserResponse
+    public record class UserResponse
+    (
+        Guid Id,
+        string Name,
+        string Job,
+        List<DutyResponse> Duties
+    )
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Job { get; set; } = string.Empty;
-        public List<DutyResponse> Duties { get; set; } = new List<DutyResponse>();
+        public void Deconstruct(out Guid id, out string name, out string job)
+        {
+            id = Id;
+            name = Name;
+            job = Job;
+        }
     }
 }

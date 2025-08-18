@@ -1,16 +1,76 @@
 using TaskApi.Core.Application.DTOs.Responses;
+using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Core.Domain.Entities;
-using AutoMapper;
 
 namespace TaskApi.Core.Application.Mappings
 {
-    public class UserProfile : Profile
+    public static class UserProfile
     {
-        public UserProfile()
+        public static User UserAssembler(CreatedUserRequest createdUserRequest)
         {
-            CreateMap<FoundUserResponse, User>();
+            var (Name, CorporateEmail, Job, Duties) = createdUserRequest with { };
 
-            CreateMap<User, UserResponse>();
+            return new User
+            {
+                Id = Guid.NewGuid(),
+                Name = Name ?? string.Empty,
+                CorporateEmail = CorporateEmail ?? string.Empty,
+                Job = Job ?? string.Empty,
+                Duties = Duties ?? new List<Duty>()
+            };
+        }
+
+        public static UserResponse UserResponseAssembler(User user)
+        {
+            var userObj = user with { };
+
+            var (id, name, job) = userObj;
+
+            return new UserResponse
+            (
+                 id,
+                 name,
+                 job,
+                 DutyProfile.DutiesResponseAssembler(userObj.Duties ?? new List<Duty>())
+            );
+        }
+
+        public static List<UserResponse> UsersResponseAssembler(List<User> users)
+        {
+            List<UserResponse> usersResponse = new List<UserResponse>();
+
+            foreach (var user in users)
+            {
+                usersResponse.Add(UserResponseAssembler(user));
+            }
+
+            return usersResponse;
+        }
+
+        public static FoundUserResponse FoundUserResponseAssembler(User user)
+        {
+            var (id, name, corporateEmail, job, duties) = user with { };
+
+            return new FoundUserResponse
+            (
+                id,
+                name,
+                corporateEmail,
+                job,
+                DutyProfile.DutiesResponseAssembler(duties)
+            );
+        }
+
+        public static FoundUserBase FoundUserRequestAssembler(FoundUserResponse foundUserResponse)
+        {
+            var (id, name, corporateEmail) = foundUserResponse with { };
+
+            return new FoundUserBase
+            {
+                Id = id,
+                Name = name,
+                CorporateEmail = corporateEmail
+            };
         }
     }
 }

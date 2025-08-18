@@ -1,6 +1,4 @@
-using AutoMapper;
-using Microsoft.Extensions.DependencyInjection;
-using TaskApi.Core.Application.Mappings;
+using TaskApi.Api.Middleware;
 using TaskApi.Core.Extensions;
 using TaskApi.Infrastructure.Extensions;
 
@@ -15,6 +13,8 @@ builder.Services.AddCore();
 builder.Services.AddInfrastructure();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense para saber mais sobre os atributos possíveis.
+    // Passe o mouse para ver as descrições dos existentes.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/api/src/TaskApi.Api/bin/Debug/net8.0/TaskApi.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/api/src/TaskApi.Api",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "Now listening on: (https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            },
+            "launchBrowser": {
+                "enabled": true,
+                "args": "http://localhost:5000",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start http://localhost:5000"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            }
+        }
+    ]
+}

@@ -1,17 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using TaskApi.Core.Application.DTOs.Responses;
 using TaskApi.Core.Domain.Entities;
 
 namespace TaskApi.Core.Application.DTOs.Requests
 {
-    public class UpdatedUserRequest
+    public record class UpdatedUserRequest : FoundUserBase
     {
-        public Guid Id { get; set; }
-        public string? Name { get; set; }
-        public string? CorporateEmail { get; set; }
-        public string? Job { get; set; }
-        public List<DutyResponse>? Duties { get; set; }
+        public string? Job { get; init; }
+        public List<Duty>? Duties { get; init; }
+        public void Deconstruct(out Guid id, out string name, out string? corporateEmail, out string? job, out List<Duty>? duties)
+        {
+            base.Deconstruct(out id, out name, out corporateEmail);
+            job = Job;
+            duties = Duties;
+        }
     }
 }

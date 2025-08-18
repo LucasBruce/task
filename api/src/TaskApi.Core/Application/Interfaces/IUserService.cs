@@ -8,7 +8,7 @@ namespace TaskApi.Core.Application.Interfaces
         Task<List<UserResponse>> GetAllUsers();
         Task<UserResponse> CreateUser(CreatedUserRequest createdUserRequest);
         Task<UserResponse> UpdateUser(UpdatedUserRequest updatedUserRequest);
-        Task<FoundUserResponse> FindUser(FoundUserRequest foundUserRequest);
-        Task<bool> DeleteUser(FoundUserRequest foundUserRequest);
+        Task<FoundUserResponse> FindUser(FoundUserBase foundUserBase);
+        Task<bool> DeleteUser(FoundUserBase foundUserBase);
     }
 }

@@ -10,6 +10,8 @@ namespace TaskApi.Api.Controllers
     {
         private readonly IDutyService _dutyService;
 
+        private readonly string _Message = "Tarefa é de Preenchimento Obrigatório.";
+
         public DutyController(IDutyService dutyService)
         {
             _dutyService = dutyService;
@@ -19,11 +21,6 @@ namespace TaskApi.Api.Controllers
         public IActionResult GetAllDuties()
         {
             var duties = _dutyService.GetAllDuties();
-            
-            if (duties == null || !duties.Result.Any())
-            {
-                return NotFound("No duties found.");
-            }
 
             return Ok(duties.Result);
         }
@@ -33,15 +30,10 @@ namespace TaskApi.Api.Controllers
         {
             if (createdDutyRequest == null)
             {
-                return BadRequest("Invalid task data.");
+                return BadRequest(_Message);
             }
 
             var dutyResponse = _dutyService.CreateDuty(createdDutyRequest);
-
-            if (dutyResponse == null)
-            {
-                return BadRequest("Failed to create task.");
-            }
 
             return CreatedAtAction(nameof(FindDuty), dutyResponse.Result);
         }
@@ -51,43 +43,30 @@ namespace TaskApi.Api.Controllers
         {
             if (updatedDutyRequest == null)
             {
-                return BadRequest("Invalid duty data.");
+                return BadRequest(_Message);
             }
 
             var dutyResponse = _dutyService.UpdateDuty(updatedDutyRequest);
-
-            if (dutyResponse == null)
-            {
-                return NotFound("Duty not found.");
-            }
 
             return Ok(dutyResponse.Result);
         }
 
         [HttpPost("find")]
-        public IActionResult FindDuty([FromBody] FoundDutyRequest foundDutyRequest)
+        public IActionResult FindDuty([FromBody] FoundDutyBase foundDutyBase)
         {
-
-            var dutyResponse = _dutyService.FindDuty(foundDutyRequest);
-
-            if (dutyResponse == null)
+            if (foundDutyBase == null)
             {
-                return NotFound("Duty not found.");
+                return BadRequest(_Message);
             }
+            var dutyResponse = _dutyService.FindDuty(foundDutyBase);
 
             return Ok(dutyResponse.Result);
         }
 
         [HttpDelete]
-        public IActionResult DeleteDuty( [FromBody] FoundDutyRequest foundDutyRequest)
+        public IActionResult DeleteDuty([FromBody] FoundDutyBase foundDutyBase)
         {
-      
-            var isDeleted = _dutyService.DeleteDuty(foundDutyRequest);
-
-            if (!isDeleted.Result)
-            {
-                return NotFound("Duty not found or could not be deleted.");
-            }
+            _dutyService.DeleteDuty(foundDutyBase);
 
             return NoContent();
         }
