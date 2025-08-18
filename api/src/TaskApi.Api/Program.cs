@@ -1,3 +1,4 @@
+using TaskApi.Api.Middleware;
 using TaskApi.Core.Extensions;
 using TaskApi.Infrastructure.Extensions;
 
@@ -12,6 +13,8 @@ builder.Services.AddCore();
 builder.Services.AddInfrastructure();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

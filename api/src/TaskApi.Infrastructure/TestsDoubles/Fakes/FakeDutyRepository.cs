@@ -1,8 +1,8 @@
 using TaskApi.Core.Domain.Entities;
+using TaskApi.Core.Domain.Exception;
 using TaskApi.Core.Application.Interfaces;
 using TaskApi.Core.Application.DTOs.Requests;
 using TaskApi.Infrastructure.TestsDoubles.Stubs;
-using TaskApi.Core.Domain.Exception;
 
 namespace TaskApi.Infrastructure.TestsDoubles.Fakes
 {
