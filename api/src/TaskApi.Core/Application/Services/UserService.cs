@@ -33,7 +33,6 @@ namespace TaskApi.Core.Application.Services
         public async Task<FoundUserResponse> FindUser(FoundUserBase foundUserBase)
         {
             var user = await _userRepository.FindUser(foundUserBase);
-            Console.WriteLine("Aqui....",foundUserBase);
 
             return UserProfile.FoundUserResponseAssembler(user);
         }
