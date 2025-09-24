@@ -17,8 +17,7 @@ import { Component } from '@angular/core';
   `,
 })
 export class Layout {
-
-  get titulo(){
+  get titulo() {
     return 'Toggle me!';
   }
 }
