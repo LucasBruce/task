@@ -6,13 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularApp",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:4200") // origem do Angular
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        });
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+        policy
+            .AllowAnyOrigin()      // ou .WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
 
 builder.Services.AddEndpointsApiExplorer();
@@ -24,6 +24,8 @@ builder.Services.AddCore();
 builder.Services.AddInfrastructure();
 
 var app = builder.Build();
+
+app.UseCors("CorsPolicy");
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
