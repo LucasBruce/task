@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+
+@mixin icons-styles($float-arg) {
+  font-size: 1.1rem;
+  float: $float-arg;
+  margin-top: 0.2rem;
+}
+
+i {
+  @include icons-styles(right);
+}
